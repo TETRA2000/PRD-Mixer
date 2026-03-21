@@ -8,7 +8,7 @@ struct SystemPromptEditorView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var name: String = ""
-    @State private var body: String = ""
+    @State private var promptBody: String = ""
     @State private var purpose: PromptPurpose = .generation
 
     private var isNew: Bool { prompt == nil }
@@ -30,7 +30,7 @@ struct SystemPromptEditorView: View {
                 }
 
                 Section("Prompt Body") {
-                    TextEditor(text: $body)
+                    TextEditor(text: $promptBody)
                         .frame(minHeight: 300)
                         .font(.system(.body, design: .monospaced))
                 }
@@ -54,7 +54,7 @@ struct SystemPromptEditorView: View {
             .onAppear {
                 if let prompt {
                     name = prompt.name
-                    body = prompt.body
+                    promptBody = prompt.body
                     purpose = prompt.purpose
                 }
             }
@@ -64,12 +64,12 @@ struct SystemPromptEditorView: View {
     private func save() {
         if let prompt {
             prompt.name = name
-            prompt.body = body
+            prompt.body = promptBody
             prompt.purpose = purpose
         } else {
             let newPrompt = SystemPrompt(
                 name: name,
-                body: body,
+                body: promptBody,
                 purpose: purpose
             )
             modelContext.insert(newPrompt)

@@ -17,7 +17,7 @@ final class PRDGenerationService {
 
     var isAvailable: Bool {
         #if canImport(FoundationModels)
-        LanguageModelSession.isAvailable
+        SystemLanguageModel.default.availability == .available
         #else
         false
         #endif
@@ -30,7 +30,7 @@ final class PRDGenerationService {
         error = nil
 
         #if canImport(FoundationModels)
-        guard LanguageModelSession.isAvailable else {
+        guard SystemLanguageModel.default.availability == .available else {
             error = "Foundation Model is not available on this device. Please use a supported device running iOS 26 or later."
             isGenerating = false
             return
@@ -52,9 +52,9 @@ final class PRDGenerationService {
         """
 
         do {
-            let stream = session.streamResponse(to: userPrompt, generating: String.self)
+            let stream = session.streamResponse(to: userPrompt)
             for try await partial in stream {
-                streamedText = partial
+                streamedText = partial.content
             }
         } catch {
             self.error = "Generation failed: \(error.localizedDescription)"
