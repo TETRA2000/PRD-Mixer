@@ -17,18 +17,26 @@ struct MixingBowlView: View {
                     }
                 } label: {
                     HStack {
-                        Text("\u{1F9EA}")
-                            .font(.title2)
-                        Text("Mixing Bowl")
-                            .font(.headline)
-                        Spacer()
-                        Text("\(ingredients.count)")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background(Capsule().fill(Color.accentColor))
+                        if isExpanded {
+                            Text("\u{1F9EA}")
+                                .font(.title2)
+                            Text("Mixing Bowl")
+                                .font(.headline)
+                            Spacer()
+                            Text("\(ingredients.count)")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
+                                .background(Capsule().fill(Color.accentColor))
+                        } else {
+                            ForEach(ingredients) { ingredient in
+                                Text(ingredient.emoji)
+                                    .font(.title3)
+                            }
+                            Spacer()
+                        }
                         Image(systemName: isExpanded ? "chevron.down" : "chevron.up")
                             .font(.caption)
                             .foregroundStyle(.secondary)
