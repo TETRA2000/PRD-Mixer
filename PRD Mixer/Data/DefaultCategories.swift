@@ -43,17 +43,17 @@ enum DefaultCategories {
             sortOrder: 4
         ),
         CategoryData(
-            id: "techStack",
-            displayName: "Tech Stack",
-            emoji: "\u{1F6E0}\u{FE0F}",
+            id: "interactionModel",
+            displayName: "Interaction Model",
+            emoji: "\u{1F91B}",
             colorHex: "#636E72",
             secondaryColorHex: "#B2BEC3",
             sortOrder: 5
         ),
         CategoryData(
-            id: "monetisation",
-            displayName: "Monetisation",
-            emoji: "\u{1F4B0}",
+            id: "vibe",
+            displayName: "Vibe / Spirit",
+            emoji: "\u{1FA84}",
             colorHex: "#FDCB6E",
             secondaryColorHex: "#FFEAA7",
             sortOrder: 6

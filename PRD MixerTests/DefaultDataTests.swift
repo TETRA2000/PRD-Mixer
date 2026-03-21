@@ -47,8 +47,8 @@ struct DefaultCategoriesTests {
 struct DefaultIngredientsTests {
 
     @Test func all_containsExpectedCount() {
-        // 10 + 7 + 12 + 10 + 15 + 12 + 6 + 6 = 78
-        #expect(DefaultIngredients.all.count == 78)
+        // 10 + 7 + 12 + 10 + 15 + 10 + 10 + 6 = 80
+        #expect(DefaultIngredients.all.count == 80)
     }
 
     @Test func all_haveUniqueIds() {
@@ -94,8 +94,8 @@ struct DefaultIngredientsTests {
         #expect(DefaultIngredients.theme.count == 12)
         #expect(DefaultIngredients.uxStyle.count == 10)
         #expect(DefaultIngredients.feature.count == 15)
-        #expect(DefaultIngredients.techStack.count == 12)
-        #expect(DefaultIngredients.monetisation.count == 6)
+        #expect(DefaultIngredients.interactionModel.count == 10)
+        #expect(DefaultIngredients.vibe.count == 10)
         #expect(DefaultIngredients.scale.count == 6)
     }
 }
