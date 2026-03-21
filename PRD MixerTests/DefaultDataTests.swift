@@ -1,0 +1,147 @@
+import Testing
+@testable import PRD_Mixer
+
+struct DefaultCategoriesTests {
+
+    @Test func all_containsExpectedCount() {
+        #expect(DefaultCategories.all.count == 8)
+    }
+
+    @Test func all_haveSortedOrder() {
+        let sortOrders = DefaultCategories.all.map(\.sortOrder)
+        #expect(sortOrders == sortOrders.sorted())
+    }
+
+    @Test func all_haveUniqueIds() {
+        let ids = DefaultCategories.all.map(\.id)
+        #expect(Set(ids).count == ids.count)
+    }
+
+    @Test func all_haveUniqueSortOrders() {
+        let sortOrders = DefaultCategories.all.map(\.sortOrder)
+        #expect(Set(sortOrders).count == sortOrders.count)
+    }
+
+    @Test func all_haveValidData() {
+        for category in DefaultCategories.all {
+            #expect(!category.id.isEmpty)
+            #expect(!category.displayName.isEmpty)
+            #expect(!category.emoji.isEmpty)
+            #expect(category.colorHex.hasPrefix("#"))
+            #expect(category.secondaryColorHex.hasPrefix("#"))
+        }
+    }
+
+    @Test func category_forId_findsExisting() {
+        let result = DefaultCategories.category(for: "appType")
+        #expect(result != nil)
+        #expect(result?.displayName == "App Type")
+    }
+
+    @Test func category_forId_returnsNilForUnknown() {
+        let result = DefaultCategories.category(for: "nonexistent")
+        #expect(result == nil)
+    }
+}
+
+struct DefaultIngredientsTests {
+
+    @Test func all_containsExpectedCount() {
+        // 10 + 7 + 12 + 10 + 15 + 12 + 6 + 6 = 78
+        #expect(DefaultIngredients.all.count == 78)
+    }
+
+    @Test func all_haveUniqueIds() {
+        let ids = DefaultIngredients.all.map(\.id)
+        #expect(Set(ids).count == ids.count)
+    }
+
+    @Test func all_haveValidData() {
+        for ingredient in DefaultIngredients.all {
+            #expect(!ingredient.id.isEmpty)
+            #expect(!ingredient.emoji.isEmpty)
+            #expect(!ingredient.label.isEmpty)
+            #expect(!ingredient.categoryId.isEmpty)
+            #expect(ingredient.colorHex.hasPrefix("#"))
+            #expect(ingredient.isCustom == false)
+        }
+    }
+
+    @Test func all_referencesValidCategories() {
+        let categoryIds = Set(DefaultCategories.all.map(\.id))
+        for ingredient in DefaultIngredients.all {
+            #expect(categoryIds.contains(ingredient.categoryId),
+                    "Ingredient \(ingredient.id) references unknown category \(ingredient.categoryId)")
+        }
+    }
+
+    @Test func ingredients_forCategory_filtersCorrectly() {
+        let appTypeIngredients = DefaultIngredients.ingredients(for: "appType")
+        #expect(appTypeIngredients.count == 10)
+        for ingredient in appTypeIngredients {
+            #expect(ingredient.categoryId == "appType")
+        }
+    }
+
+    @Test func ingredients_forUnknownCategory_returnsEmpty() {
+        let result = DefaultIngredients.ingredients(for: "unknown")
+        #expect(result.isEmpty)
+    }
+
+    @Test func perCategoryCount() {
+        #expect(DefaultIngredients.appType.count == 10)
+        #expect(DefaultIngredients.platform.count == 7)
+        #expect(DefaultIngredients.theme.count == 12)
+        #expect(DefaultIngredients.uxStyle.count == 10)
+        #expect(DefaultIngredients.feature.count == 15)
+        #expect(DefaultIngredients.techStack.count == 12)
+        #expect(DefaultIngredients.monetisation.count == 6)
+        #expect(DefaultIngredients.scale.count == 6)
+    }
+}
+
+struct DefaultDiscoverItemsTests {
+
+    @Test func all_isNotEmpty() {
+        #expect(!DefaultDiscoverItems.all.isEmpty)
+    }
+
+    @Test func all_haveValidIngredients() {
+        for item in DefaultDiscoverItems.all {
+            #expect(!item.title.isEmpty)
+            #expect(!item.description.isEmpty)
+            #expect(!item.ingredients.isEmpty)
+            #expect(!item.prdPreview.isEmpty)
+        }
+    }
+}
+
+struct DefaultSystemPromptsTests {
+
+    @Test func generationPromptBody_isNotEmpty() {
+        #expect(!DefaultSystemPrompts.generationPromptBody.isEmpty)
+    }
+
+    @Test func suggestionPromptBody_isNotEmpty() {
+        #expect(!DefaultSystemPrompts.suggestionPromptBody.isEmpty)
+    }
+
+    @Test func reversePromptBody_isNotEmpty() {
+        #expect(!DefaultSystemPrompts.reversePromptBody.isEmpty)
+    }
+
+    @Test func makeDefault_setsCorrectPurpose() {
+        let gen = DefaultSystemPrompts.makeDefault(purpose: .generation)
+        #expect(gen.purpose == .generation)
+        #expect(gen.isDefault == true)
+        #expect(gen.name == "Standard PRD")
+
+        let sug = DefaultSystemPrompts.makeDefault(purpose: .suggestion)
+        #expect(sug.purpose == .suggestion)
+        #expect(sug.name == "Smart Suggestions")
+
+        let rev = DefaultSystemPrompts.makeDefault(purpose: .reverse)
+        #expect(rev.purpose == .reverse)
+        #expect(rev.name == "Reverse Engineer")
+    }
+}
