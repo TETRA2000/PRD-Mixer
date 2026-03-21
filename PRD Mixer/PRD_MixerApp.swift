@@ -1,10 +1,3 @@
-//
-//  PRD_MixerApp.swift
-//  PRD Mixer
-//
-//  Created by Takahiko Inayama on 2026/3/21.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -12,7 +5,10 @@ import SwiftData
 struct PRD_MixerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Project.self,
+            CustomIngredient.self,
+            CustomCategory.self,
+            SystemPrompt.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -26,7 +22,16 @@ struct PRD_MixerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    seedDefaultsIfNeeded()
+                }
         }
         .modelContainer(sharedModelContainer)
+    }
+
+    private func seedDefaultsIfNeeded() {
+        let context = sharedModelContainer.mainContext
+        let viewModel = SettingsViewModel()
+        viewModel.seedDefaultPrompts(modelContext: context)
     }
 }
