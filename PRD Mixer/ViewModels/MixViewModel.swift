@@ -101,6 +101,22 @@ final class MixViewModel {
         HapticService.selection()
     }
 
+    // MARK: - Custom Ingredient
+
+    func addCustomIngredient(label: String) {
+        let trimmed = label.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        let ingredient = IngredientData(
+            emoji: "✏️",
+            label: trimmed,
+            categoryId: "custom",
+            colorHex: "#636E72",
+            isCustom: true
+        )
+        selectedIngredients.append(ingredient)
+        HapticService.selection()
+    }
+
     // MARK: - Remix
 
     func loadIngredients(_ ingredients: [IngredientData]) {
