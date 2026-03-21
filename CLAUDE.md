@@ -11,7 +11,7 @@ PRD Mixer is a native iOS app that transforms PRD (Product Requirements Document
 - **Data**: SwiftData (on-device, no cloud)
 - **AI**: Apple Foundation Model (iOS 26+, on-device only)
 - **Architecture**: MVVM with `@Observable` macros
-- **Dependencies**: None (Apple frameworks only)
+- **Dependencies**: None for the iOS app (Apple frameworks only); [swift-argument-parser](https://github.com/apple/swift-argument-parser) for the CLI tool
 
 ## Project Structure
 
@@ -21,6 +21,7 @@ PRD Mixer is a native iOS app that transforms PRD (Product Requirements Document
 - `PRD Mixer/ViewModels/` — UI state management (`@Observable`)
 - `PRD Mixer/Views/` — SwiftUI views organized by tab (Mix, Projects, Discover, Settings)
 - `PRD Mixer/Extensions/` — Swift type extensions
+- `PromptTuner/Sources/` — Prompt Tuner CLI tool (macOS, shares app models via SPM)
 - `docs/` — Architecture, data model, UI guide, and customization docs
 
 ## Build & Run
@@ -28,11 +29,15 @@ PRD Mixer is a native iOS app that transforms PRD (Product Requirements Document
 Requires Xcode 26+ and iOS 26+ deployment target.
 
 ```bash
-# Build
+# Build iOS app
 xcodebuild -scheme "PRD Mixer" -configuration Debug
 
 # Run tests
 xcodebuild -scheme "PRD Mixer" -destination generic/platform=iOS test
+
+# Build and run Prompt Tuner CLI (macOS)
+swift build --product prompt-tuner
+swift run prompt-tuner --help
 ```
 
 Foundation Model features require an Apple Silicon device. The simulator uses placeholder generation with simulated streaming.

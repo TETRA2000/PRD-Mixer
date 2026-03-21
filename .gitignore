@@ -30,6 +30,11 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+.swiftpm/
+
+# Prompt Tuner CLI
+custom_data.json
+Package.resolved
 
 # CocoaPods
 #
