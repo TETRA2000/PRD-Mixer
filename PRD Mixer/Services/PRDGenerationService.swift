@@ -142,12 +142,16 @@ final class PRDGenerationService {
         On a real device with iOS 26+, the Foundation Model will generate a fully detailed PRD.*
         """
 
-        // Simulate streaming by revealing text progressively
-        let words = placeholder.split(separator: " ")
+        // Simulate streaming by revealing text character by character in chunks
+        let characters = Array(placeholder)
         var current = ""
-        for (index, word) in words.enumerated() {
-            current += (index == 0 ? "" : " ") + word
+        var i = 0
+        while i < characters.count {
+            // Advance by a small chunk (roughly one word) to simulate token streaming
+            let chunkEnd = min(i + 6, characters.count)
+            current += String(characters[i..<chunkEnd])
             streamedText = current
+            i = chunkEnd
             try? await Task.sleep(for: .milliseconds(15))
         }
     }
