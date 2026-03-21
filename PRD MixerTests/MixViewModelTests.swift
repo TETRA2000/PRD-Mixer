@@ -94,17 +94,17 @@ struct MixViewModelTests {
 
     // MARK: - Surprise Me
 
-    @Test func surpriseMe_selectsOnePerCategory() {
+    @Test func surpriseMe_selects3to6Ingredients() {
         let vm = MixViewModel()
         vm.toggleIngredient(makeIngredient(id: "preexisting"))
         vm.surpriseMe(customCategories: [], customIngredients: [])
 
-        // Should have cleared and then selected one per default category
-        let categoryCount = DefaultCategories.all.count
-        #expect(vm.selectedIngredients.count == categoryCount)
+        // Should have cleared and then selected 3 to 6 ingredients
+        #expect(vm.selectedIngredients.count >= 3)
+        #expect(vm.selectedIngredients.count <= 6)
 
         // Verify each selected ingredient comes from a different category
         let categoryIds = Set(vm.selectedIngredients.map(\.categoryId))
-        #expect(categoryIds.count == categoryCount)
+        #expect(categoryIds.count == vm.selectedIngredients.count)
     }
 }
