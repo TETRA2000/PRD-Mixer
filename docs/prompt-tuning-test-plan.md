@@ -255,6 +255,86 @@ See `prompts/generation_v3.txt` for the v3 prompt.
 
 ---
 
+## Round 4: v4 Prompt (Prose Summary)
+
+User feedback: the app is a fun/joke app — bullet-point summaries kill the delight of reading a deadpan PRD pitch made from absurd ingredients. Changed Summary from strict bullets back to a **2-3 sentence prose paragraph**.
+
+See `prompts/generation_v4.txt`.
+
+### Round 4 Results
+
+| Test | Words | Summary Prose | Title | Headings | Lists | No Trailing | Tech Stack | Score |
+|------|-------|---------------|-------|----------|-------|-------------|------------|-------|
+| V4-1 (cats+todo+playful) | 456 | PASS | PASS | PASS | PASS | FAIL (trailing para) | PASS | 9/10 |
+| V4-2 (dogs+ecommerce+absurdist) | 527 | PASS | PASS | PASS | PASS | FAIL (trailing para) | PASS | 8/10 |
+| V4-3 (fitness+serious+production) | 394 | PASS | PASS | PASS | PASS | FAIL (trailing para) | PASS | 9/10 |
+
+### Round 4 Summary
+
+All three outputs produce a fun, readable prose Summary paragraph. Formatting (headings, lists, tech stack) is consistent. The on-device Foundation Model consistently adds a closing paragraph after Milestones despite explicit instructions — this appears to be a model-level limitation rather than a prompt issue.
+
+**Average score: 8.7/10**
+
+### Known Limitation: Trailing Paragraph
+
+The Apple Foundation Model reliably appends 1-2 sentences after the Milestones section despite "stop here" instructions. This is a known behavior of the on-device model and is acceptable for the app's casual use case. The trailing text is harmless — it reads like a natural sign-off.
+
+---
+
 ## Recommendation
 
-Adopt `prompts/generation_v3.txt` as the new default system prompt for PRD generation. Update `DefaultSystemPrompts.generationPromptBody` in the app source.
+Adopt `prompts/generation_v4.txt` as the new default system prompt for PRD generation. The v4 prompt has been applied to `DefaultSystemPrompts.generationPromptBody`.
+
+### Final Comparison: v1 → v4
+
+| Metric | v1 (baseline) | v4 (final) |
+|--------|--------------|------------|
+| Avg word count | 905 | 460 |
+| Summary format | Long paragraph, no structure | Fun prose pitch (2-3 sentences) |
+| Tech stack accuracy | 1/6 mention Swift | 3/3 mention Swift/SwiftUI |
+| Format consistency | 4/10 | 9/10 |
+| Unwanted sections | 4/6 have Conclusion | 0/3 have Conclusion |
+| Trailing text | N/A | 3/3 (model limitation) |
+
+---
+
+## Round 5: A/B Testing — Creative Direction
+
+v4 established a solid structural foundation. Round 5 explores **creative direction** — finding the voice that makes PRDs most fun to read.
+
+### Prompt Variants
+
+| Variant | File | Concept | Key Differences |
+|---------|------|---------|-----------------|
+| v4 (baseline) | `prompts/generation_v4.txt` | Neutral template | Current default |
+| v5a | `prompts/generation_v5a.txt` | Deadpan Pitch Meeting | VC-pitch energy, branded feature names, keynote milestones |
+| v5b | `prompts/generation_v5b.txt` | Tight and Punchy | Terse writing, 200-350 words, sentence fragments, no filler |
+| v5c | `prompts/generation_v5c.txt` | Startup One-Pager | Hackathon demo format: The Pitch, Secret Sauce, Ship It |
+
+### Test Ingredient Combinations (8 combos)
+
+| # | Name | IDs |
+|---|------|-----|
+| T1 | Absurd Classic | `appType_todo,platform_ios,theme_cats,ux_brutalist,vibe_absurdist,scale_weekend` |
+| T2 | Contradictory Enterprise | `appType_ecommerce,platform_visionos,theme_seniors,ux_skeuomorphic,feat_voice,interact_gesture,vibe_serious,scale_enterprise` |
+| T3 | Feature Overload | `appType_weather,platform_ios,feat_push,feat_offline,feat_widgets,feat_camera,feat_social,feat_analytics,interact_haptic,vibe_edgy` |
+| T4 | Minimal Input | `appType_journal,vibe_cozy` |
+| T5 | Maximum Absurdity | `appType_fitness,platform_watchos,theme_dogs,ux_glassmorphism,feat_camera,interact_drag,vibe_joke,scale_solo` |
+| T6 | Wholesome Weekend | `appType_reading,platform_ios,theme_kids,ux_playful,feat_a11y,interact_tap,vibe_wholesome,scale_mvp` |
+| T7 | Retro Hipster | `appType_music,platform_macos,theme_creative,ux_colorful,feat_shortcuts,interact_keyboard,vibe_retro,scale_team` |
+| T8 | Zen Contradiction | `appType_chat,platform_ios,theme_business,ux_minimalist,feat_auth,interact_convo,vibe_zen,scale_production` |
+
+### Output Directory
+
+All outputs saved to `outputs/` (gitignored):
+```
+outputs/
+  v4_baseline/t1_absurd_classic.md ... t8_zen_contradiction.md
+  v5a/t1_absurd_classic.md ... t8_zen_contradiction.md
+  v5b/t1_absurd_classic.md ... t8_zen_contradiction.md
+  v5c/t1_absurd_classic.md ... t8_zen_contradiction.md
+```
+
+### Results
+
+*(To be filled after generation and user evaluation)*

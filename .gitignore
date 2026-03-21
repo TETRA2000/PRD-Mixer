@@ -35,6 +35,7 @@ playground.xcworkspace
 # Prompt Tuner CLI
 custom_data.json
 Package.resolved
+outputs/
 
 # CocoaPods
 #
