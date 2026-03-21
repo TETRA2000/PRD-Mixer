@@ -80,7 +80,7 @@ enum DefaultSystemPrompts {
     For each ingredient, provide:
     - An emoji icon
     - A short label (2–4 words)
-    - A category (one of: appType, platform, theme, uxStyle, feature, techStack, monetisation, scale)
+    - A category (one of: appType, platform, theme, uxStyle, feature, interactionModel, vibe, scale)
 
     Respond in JSON format:
     [

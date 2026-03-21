@@ -2,7 +2,7 @@
 
 ## Custom Categories
 
-Users can create their own ingredient categories beyond the 8 built-in ones (App Type, Platform, Theme, UX Style, Feature, Tech Stack, Monetisation, Scale).
+Users can create their own ingredient categories beyond the 8 built-in ones (App Type, Platform, Theme, UX Style, Feature, Interaction Model, Vibe / Spirit, Scale).
 
 ### Creating a Category
 

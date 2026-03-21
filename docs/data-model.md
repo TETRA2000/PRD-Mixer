@@ -112,19 +112,19 @@ enum PromptPurpose: String, Codable {
 | theme | Theme / Audience | 🎭 |
 | uxStyle | UX Style | 🎨 |
 | feature | Feature | ⚡ |
-| techStack | Tech Stack | 🛠️ |
-| monetisation | Monetisation | 💰 |
+| interactionModel | Interaction Model | 🤛 |
+| vibe | Vibe / Spirit | 🪄 |
 | scale | Scale | 📏 |
 
-### Ingredients (78 built-in)
+### Ingredients (80 built-in)
 
 - App Type: 10 ingredients
 - Platform: 7 ingredients
 - Theme / Audience: 12 ingredients
 - UX Style: 10 ingredients
 - Feature: 15 ingredients
-- Tech Stack: 12 ingredients
-- Monetisation: 6 ingredients
+- Interaction Model: 10 ingredients
+- Vibe / Spirit: 10 ingredients
 - Scale: 6 ingredients
 
 ### System Prompts (3 defaults)

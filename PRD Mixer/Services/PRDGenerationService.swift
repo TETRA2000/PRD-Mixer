@@ -120,7 +120,7 @@ final class PRDGenerationService {
 
         ## Technical Architecture
 
-        \(ingredients.filter { $0.categoryId == "techStack" || $0.categoryId == "platform" }.map { "- \($0.emoji) **\($0.label)**" }.joined(separator: "\n"))
+        \(ingredients.filter { $0.categoryId == "interactionModel" || $0.categoryId == "platform" }.map { "- \($0.emoji) **\($0.label)**" }.joined(separator: "\n"))
 
         ## Milestones
 
