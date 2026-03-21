@@ -1,7 +1,7 @@
 import ArgumentParser
 
 @main
-struct PromptTuner: ParsableCommand {
+struct PromptTuner: AsyncParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "prompt-tuner",
         abstract: "Test and iterate on PRD Mixer system prompts and ingredients.",
@@ -13,6 +13,7 @@ struct PromptTuner: ParsableCommand {
             ValidateIds.self,
             AddCategory.self,
             AddIngredient.self,
+            Generate.self,
         ]
     )
 }
