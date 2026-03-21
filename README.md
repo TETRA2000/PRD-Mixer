@@ -54,6 +54,31 @@ Key technical decisions:
 
 See [`docs/`](docs/) for detailed architecture, data model, and UI documentation.
 
+## Prompt Tuner CLI
+
+A companion macOS CLI tool for testing and iterating on system prompts and ingredient categories from the command line.
+
+```bash
+# Build
+swift build --product prompt-tuner
+
+# List categories and ingredients
+swift run prompt-tuner list-categories
+swift run prompt-tuner list-ingredients --category appType
+
+# Build the full prompt pair (system + user) from ingredient IDs
+swift run prompt-tuner build-prompt --ids appType_chat,platform_ios,ux_minimalist --json
+
+# Test with a custom system prompt
+swift run prompt-tuner build-prompt --ids appType_chat --system-prompt-file custom_prompt.txt
+
+# Add custom categories and ingredients
+swift run prompt-tuner add-category --id monetization --name Monetization --emoji 💰
+swift run prompt-tuner add-ingredient --id monetization_freemium --label Freemium --emoji 🆓 --category monetization
+```
+
+All commands support `--json` for machine-readable output. Run `swift run prompt-tuner --help` for full usage.
+
 ## License
 
 All rights reserved.

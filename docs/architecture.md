@@ -93,3 +93,36 @@ The app uses a 4-tab `TabView` with a shared `MixViewModel` that enables cross-t
 | Custom Ingredients | SwiftData | `@Model CustomIngredient` |
 | System Prompts | SwiftData | `@Model SystemPrompt` |
 | Default Data | Static arrays | In-memory, code-defined |
+
+## Prompt Tuner CLI
+
+A companion macOS command-line tool (`prompt-tuner`) shares the app's model and data source files via Swift Package Manager to enable prompt and ingredient iteration without deploying to a device.
+
+### Architecture
+
+The CLI is defined in `Package.swift` at the project root as a single executable target. It directly compiles the app's existing model files (`Ingredient.swift`, `IngredientCategory.swift`, `PromptPurpose.swift`, `SystemPrompt.swift`) and data files (`DefaultCategories.swift`, `DefaultIngredients.swift`, `DefaultSystemPrompts.swift`) alongside its own source files in `PromptTuner/Sources/`. This avoids code duplication — the CLI uses the same `IngredientData`, `CategoryData`, and prompt templates as the iOS app.
+
+```
+PromptTuner/
+└── Sources/
+    ├── PromptTuner.swift          Entry point (@main, ArgumentParser)
+    ├── Commands/                  Subcommand implementations
+    │   ├── ListCategories.swift
+    │   ├── ListIngredients.swift
+    │   ├── ShowPrompts.swift
+    │   ├── BuildPrompt.swift
+    │   ├── ValidateIds.swift
+    │   ├── AddCategory.swift
+    │   └── AddIngredient.swift
+    └── Support/
+        ├── PromptAssembler.swift  Replicates PRDGenerationService prompt construction
+        ├── CustomDataStore.swift  Reads/writes custom_data.json
+        └── OutputFormatter.swift  JSON and human-readable output
+```
+
+### Key Design Decisions
+
+- **Single target** — The CLI and app source files share one SPM target, so all types have internal access and no `public` modifiers are needed on existing code.
+- **No app modifications** — The Xcode project and iOS app are unaffected. SPM's `sources:` parameter selects only the files the CLI needs.
+- **Custom data via JSON** — The CLI stores custom categories and ingredients in `custom_data.json` (not SwiftData), merged with defaults at runtime via `--custom-file`.
+- **Prompt replication** — `PromptAssembler` reproduces the exact user prompt format from `PRDGenerationService.generate()`, ensuring what the CLI outputs matches what the app sends to the Foundation Model.
