@@ -11,7 +11,7 @@ PRD Mixer is a native iOS app that transforms PRD (Product Requirements Document
 - **Data**: SwiftData (on-device, no cloud)
 - **AI**: Apple Foundation Model (iOS 26+, on-device only)
 - **Architecture**: MVVM with `@Observable` macros
-- **Dependencies**: None (Apple frameworks only)
+- **Dependencies**: None for the iOS app (Apple frameworks only); [swift-argument-parser](https://github.com/apple/swift-argument-parser) for the CLI tool
 
 ## Project Structure
 

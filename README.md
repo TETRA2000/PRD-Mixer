@@ -56,10 +56,10 @@ See [`docs/`](docs/) for detailed architecture, data model, and UI documentation
 
 ## Prompt Tuner CLI
 
-A companion macOS CLI tool for testing and iterating on system prompts and ingredient categories from the command line.
+A companion macOS CLI tool for testing and iterating on system prompts and ingredient categories. Reuses the app's model and data files directly via Swift Package Manager.
 
 ```bash
-# Build
+# Build (requires macOS 26+)
 swift build --product prompt-tuner
 
 # List categories and ingredients
@@ -69,8 +69,12 @@ swift run prompt-tuner list-ingredients --category appType
 # Build the full prompt pair (system + user) from ingredient IDs
 swift run prompt-tuner build-prompt --ids appType_chat,platform_ios,ux_minimalist --json
 
+# Generate a PRD using the on-device Foundation Model
+swift run prompt-tuner generate --ids appType_chat,platform_ios,ux_minimalist
+swift run prompt-tuner generate --ids appType_todo,theme_cats --output my_prd.md
+
 # Test with a custom system prompt
-swift run prompt-tuner build-prompt --ids appType_chat --system-prompt-file custom_prompt.txt
+swift run prompt-tuner generate --ids appType_chat --system-prompt-file custom_prompt.txt
 
 # Add custom categories and ingredients
 swift run prompt-tuner add-category --id monetization --name Monetization --emoji 💰

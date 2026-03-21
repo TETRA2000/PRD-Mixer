@@ -113,7 +113,8 @@ PromptTuner/
     │   ├── BuildPrompt.swift
     │   ├── ValidateIds.swift
     │   ├── AddCategory.swift
-    │   └── AddIngredient.swift
+    │   ├── AddIngredient.swift
+    │   └── Generate.swift
     └── Support/
         ├── PromptAssembler.swift  Replicates PRDGenerationService prompt construction
         ├── CustomDataStore.swift  Reads/writes custom_data.json
@@ -126,3 +127,4 @@ PromptTuner/
 - **No app modifications** — The Xcode project and iOS app are unaffected. SPM's `sources:` parameter selects only the files the CLI needs.
 - **Custom data via JSON** — The CLI stores custom categories and ingredients in `custom_data.json` (not SwiftData), merged with defaults at runtime via `--custom-file`.
 - **Prompt replication** — `PromptAssembler` reproduces the exact user prompt format from `PRDGenerationService.generate()`, ensuring what the CLI outputs matches what the app sends to the Foundation Model.
+- **On-device generation** — The `generate` command calls the FoundationModels framework directly on macOS 26+, producing real PRDs from the command line. Streaming progress is written to stderr; the final result goes to stdout or a file via `--output`.
