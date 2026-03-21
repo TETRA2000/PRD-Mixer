@@ -1,7 +1,7 @@
 import Foundation
 
 enum DefaultIngredients {
-    static let all: [IngredientData] = appType + platform + theme + uxStyle + feature + techStack + monetisation + scale
+    static let all: [IngredientData] = appType + platform + theme + uxStyle + feature + interactionModel + vibe + scale
 
     static func ingredients(for categoryId: String) -> [IngredientData] {
         all.filter { $0.categoryId == categoryId }
@@ -86,32 +86,34 @@ enum DefaultIngredients {
         IngredientData(id: "feat_focus", emoji: "\u{1F319}", label: "Sleep / Focus Mode", categoryId: "feature", colorHex: "#2D3436"),
     ]
 
-    // MARK: - Tech Stack (12)
+    // MARK: - Interaction Model (10)
 
-    static let techStack: [IngredientData] = [
-        IngredientData(id: "tech_swiftui", emoji: "\u{1F5BC}\u{FE0F}", label: "SwiftUI", categoryId: "techStack", colorHex: "#0984E3"),
-        IngredientData(id: "tech_coredata", emoji: "\u{1F4BE}", label: "Core Data", categoryId: "techStack", colorHex: "#636E72"),
-        IngredientData(id: "tech_cloudkit", emoji: "\u{2601}\u{FE0F}", label: "CloudKit", categoryId: "techStack", colorHex: "#74B9FF"),
-        IngredientData(id: "tech_healthkit", emoji: "\u{2764}\u{FE0F}", label: "HealthKit", categoryId: "techStack", colorHex: "#D63031"),
-        IngredientData(id: "tech_arkit", emoji: "\u{1F52E}", label: "ARKit", categoryId: "techStack", colorHex: "#A29BFE"),
-        IngredientData(id: "tech_swiftdata", emoji: "\u{1F5C4}\u{FE0F}", label: "SwiftData", categoryId: "techStack", colorHex: "#6C5CE7"),
-        IngredientData(id: "tech_coreml", emoji: "\u{1F9E0}", label: "Core ML", categoryId: "techStack", colorHex: "#E17055"),
-        IngredientData(id: "tech_restapi", emoji: "\u{1F517}", label: "REST API", categoryId: "techStack", colorHex: "#00B894"),
-        IngredientData(id: "tech_firebase", emoji: "\u{1F525}", label: "Firebase", categoryId: "techStack", colorHex: "#FDCB6E"),
-        IngredientData(id: "tech_mapkit", emoji: "\u{1F5FA}\u{FE0F}", label: "MapKit", categoryId: "techStack", colorHex: "#00CEC9"),
-        IngredientData(id: "tech_foundationmodel", emoji: "\u{1F916}", label: "Foundation Model", categoryId: "techStack", colorHex: "#E84393"),
-        IngredientData(id: "tech_avfoundation", emoji: "\u{1F3AC}", label: "AVFoundation", categoryId: "techStack", colorHex: "#2D3436"),
+    static let interactionModel: [IngredientData] = [
+        IngredientData(id: "interact_voice", emoji: "\u{1F399}\u{FE0F}", label: "Voice-First", categoryId: "interactionModel", colorHex: "#636E72"),
+        IngredientData(id: "interact_gesture", emoji: "\u{1F44B}", label: "Gesture-Based", categoryId: "interactionModel", colorHex: "#74B9FF"),
+        IngredientData(id: "interact_onehand", emoji: "\u{1F44D}", label: "One-Handed", categoryId: "interactionModel", colorHex: "#A29BFE"),
+        IngredientData(id: "interact_keyboard", emoji: "\u{2328}\u{FE0F}", label: "Keyboard-Heavy", categoryId: "interactionModel", colorHex: "#2D3436"),
+        IngredientData(id: "interact_haptic", emoji: "\u{1F4F3}", label: "Haptic-Rich", categoryId: "interactionModel", colorHex: "#E84393"),
+        IngredientData(id: "interact_convo", emoji: "\u{1F4AC}", label: "Conversational", categoryId: "interactionModel", colorHex: "#0984E3"),
+        IngredientData(id: "interact_swipe", emoji: "\u{1F449}", label: "Swipe-Driven", categoryId: "interactionModel", colorHex: "#E17055"),
+        IngredientData(id: "interact_tap", emoji: "\u{1F446}", label: "Tap & Go", categoryId: "interactionModel", colorHex: "#00B894"),
+        IngredientData(id: "interact_drag", emoji: "\u{270B}\u{FE0F}", label: "Drag & Drop", categoryId: "interactionModel", colorHex: "#6C5CE7"),
+        IngredientData(id: "interact_ambient", emoji: "\u{1F30A}", label: "Ambient / Passive", categoryId: "interactionModel", colorHex: "#00CEC9"),
     ]
 
-    // MARK: - Monetisation (6)
+    // MARK: - Vibe / Spirit (10)
 
-    static let monetisation: [IngredientData] = [
-        IngredientData(id: "money_freemium", emoji: "\u{1F4B0}", label: "Freemium", categoryId: "monetisation", colorHex: "#FDCB6E"),
-        IngredientData(id: "money_subscription", emoji: "\u{1F4C5}", label: "Subscription", categoryId: "monetisation", colorHex: "#6C5CE7"),
-        IngredientData(id: "money_onetime", emoji: "\u{1F3F7}\u{FE0F}", label: "One-Time Purchase", categoryId: "monetisation", colorHex: "#00B894"),
-        IngredientData(id: "money_ads", emoji: "\u{1F4FA}", label: "Ad-Supported", categoryId: "monetisation", colorHex: "#E17055"),
-        IngredientData(id: "money_free", emoji: "\u{1F193}", label: "Completely Free", categoryId: "monetisation", colorHex: "#74B9FF"),
-        IngredientData(id: "money_enterprise", emoji: "\u{1F3E2}", label: "Enterprise License", categoryId: "monetisation", colorHex: "#2D3436"),
+    static let vibe: [IngredientData] = [
+        IngredientData(id: "vibe_serious", emoji: "\u{1F4BC}", label: "Serious Tool", categoryId: "vibe", colorHex: "#2D3436"),
+        IngredientData(id: "vibe_joke", emoji: "\u{1F921}", label: "Joke / Parody", categoryId: "vibe", colorHex: "#FDCB6E"),
+        IngredientData(id: "vibe_experimental", emoji: "\u{1F52C}", label: "Experimental", categoryId: "vibe", colorHex: "#A29BFE"),
+        IngredientData(id: "vibe_retro", emoji: "\u{1F4FC}", label: "Retro", categoryId: "vibe", colorHex: "#E17055"),
+        IngredientData(id: "vibe_wholesome", emoji: "\u{1F33B}", label: "Wholesome", categoryId: "vibe", colorHex: "#00B894"),
+        IngredientData(id: "vibe_edgy", emoji: "\u{1F525}", label: "Edgy", categoryId: "vibe", colorHex: "#D63031"),
+        IngredientData(id: "vibe_absurdist", emoji: "\u{1F92A}", label: "Absurdist", categoryId: "vibe", colorHex: "#6C5CE7"),
+        IngredientData(id: "vibe_cozy", emoji: "\u{2615}", label: "Cozy", categoryId: "vibe", colorHex: "#FDCB6E"),
+        IngredientData(id: "vibe_zen", emoji: "\u{1F9D8}", label: "Minimalist Zen", categoryId: "vibe", colorHex: "#74B9FF"),
+        IngredientData(id: "vibe_punk", emoji: "\u{1F3B8}", label: "Punk / DIY", categoryId: "vibe", colorHex: "#E84393"),
     ]
 
     // MARK: - Scale (6)

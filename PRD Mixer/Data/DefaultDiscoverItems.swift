@@ -11,8 +11,8 @@ enum DefaultDiscoverItems {
                 DefaultIngredients.theme.first { $0.id == "theme_cats" }!,
                 DefaultIngredients.uxStyle.first { $0.id == "ux_playful" }!,
                 DefaultIngredients.feature.first { $0.id == "feat_push" }!,
-                DefaultIngredients.techStack.first { $0.id == "tech_swiftui" }!,
-                DefaultIngredients.monetisation.first { $0.id == "money_freemium" }!,
+                DefaultIngredients.interactionModel.first { $0.id == "interact_tap" }!,
+                DefaultIngredients.vibe.first { $0.id == "vibe_wholesome" }!,
                 DefaultIngredients.scale.first { $0.id == "scale_mvp" }!,
             ],
             prdPreview: """
@@ -40,8 +40,8 @@ enum DefaultDiscoverItems {
                 DefaultIngredients.theme.first { $0.id == "theme_health" }!,
                 DefaultIngredients.uxStyle.first { $0.id == "ux_minimalist" }!,
                 DefaultIngredients.feature.first { $0.id == "feat_offline" }!,
-                DefaultIngredients.techStack.first { $0.id == "tech_healthkit" }!,
-                DefaultIngredients.monetisation.first { $0.id == "money_free" }!,
+                DefaultIngredients.interactionModel.first { $0.id == "interact_onehand" }!,
+                DefaultIngredients.vibe.first { $0.id == "vibe_serious" }!,
                 DefaultIngredients.scale.first { $0.id == "scale_weekend" }!,
             ],
             prdPreview: """
@@ -69,8 +69,8 @@ enum DefaultDiscoverItems {
                 DefaultIngredients.uxStyle.first { $0.id == "ux_colorful" }!,
                 DefaultIngredients.feature.first { $0.id == "feat_sync" }!,
                 DefaultIngredients.feature.first { $0.id == "feat_social" }!,
-                DefaultIngredients.techStack.first { $0.id == "tech_cloudkit" }!,
-                DefaultIngredients.monetisation.first { $0.id == "money_subscription" }!,
+                DefaultIngredients.interactionModel.first { $0.id == "interact_swipe" }!,
+                DefaultIngredients.vibe.first { $0.id == "vibe_cozy" }!,
                 DefaultIngredients.scale.first { $0.id == "scale_production" }!,
             ],
             prdPreview: """
@@ -85,7 +85,7 @@ enum DefaultDiscoverItems {
             - Smart task lists with deadline tracking and priority sorting
             - Flashcard creator with spaced repetition algorithm
             - Pomodoro timer with customisable focus/break intervals
-            - Study groups with shared progress tracking via CloudKit
+            - Study groups with shared progress tracking
             - Achievement badges and streak tracking
             """
         ),
