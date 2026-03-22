@@ -28,10 +28,8 @@ struct GenerationView: View {
 
                             Divider()
 
-                            Text(AttributedString(fullMarkdown: viewModel.generationService.streamedText))
-                                .font(.body)
+                            MarkdownBlocksView(markdown: viewModel.generationService.streamedText)
                                 .textSelection(.enabled)
-                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .padding()
                     }
