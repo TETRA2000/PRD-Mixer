@@ -1,0 +1,942 @@
+{
+  "categories": [
+    {
+      "id": "gameGenre",
+      "displayName": "Game Genre",
+      "emoji": "🎮",
+      "colorHex": "#E74C3C",
+      "secondaryColorHex": "#FF6B6B",
+      "sortOrder": 8,
+      "isDefault": false
+    },
+    {
+      "id": "creativeTool",
+      "displayName": "Creative Tool",
+      "emoji": "🖌️",
+      "colorHex": "#8E44AD",
+      "secondaryColorHex": "#BB6BD9",
+      "sortOrder": 9,
+      "isDefault": false
+    },
+    {
+      "id": "world",
+      "displayName": "World / Setting",
+      "emoji": "🌍",
+      "colorHex": "#27AE60",
+      "secondaryColorHex": "#6BCB77",
+      "sortOrder": 10,
+      "isDefault": false
+    },
+    {
+      "id": "mood",
+      "displayName": "Mood / Energy",
+      "emoji": "💫",
+      "colorHex": "#F39C12",
+      "secondaryColorHex": "#F7DC6F",
+      "sortOrder": 11,
+      "isDefault": false
+    },
+    {
+      "id": "wildcard",
+      "displayName": "Wildcard",
+      "emoji": "🎲",
+      "colorHex": "#E91E63",
+      "secondaryColorHex": "#F48FB1",
+      "sortOrder": 12,
+      "isDefault": false
+    },
+    {
+      "id": "hobby",
+      "displayName": "Hobby",
+      "emoji": "🧶",
+      "colorHex": "#F39C12",
+      "secondaryColorHex": "#F7DC6F",
+      "sortOrder": 13,
+      "isDefault": false
+    },
+    {
+      "id": "companion",
+      "displayName": "Companion / Sidekick",
+      "emoji": "🤖",
+      "colorHex": "#1ABC9C",
+      "secondaryColorHex": "#76D7C4",
+      "sortOrder": 14,
+      "isDefault": false
+    },
+    {
+      "id": "popCulture",
+      "displayName": "Pop Culture Flavor",
+      "emoji": "🎬",
+      "colorHex": "#E91E63",
+      "secondaryColorHex": "#F48FB1",
+      "sortOrder": 15,
+      "isDefault": false
+    },
+    {
+      "id": "transport",
+      "displayName": "Transportation",
+      "emoji": "🚲",
+      "colorHex": "#3498DB",
+      "secondaryColorHex": "#85C1E9",
+      "sortOrder": 16,
+      "isDefault": false
+    }
+  ],
+  "ingredients": [
+    {
+      "id": "appType_notes",
+      "emoji": "📒",
+      "label": "Note Taking",
+      "categoryId": "appType",
+      "colorHex": "#6C5CE7",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "appType_socialfeed",
+      "emoji": "📢",
+      "label": "Social Feed",
+      "categoryId": "appType",
+      "colorHex": "#6C5CE7",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "appType_forum",
+      "emoji": "👥",
+      "label": "Community Forum",
+      "categoryId": "appType",
+      "colorHex": "#6C5CE7",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "appType_project",
+      "emoji": "📋",
+      "label": "Project Manager",
+      "categoryId": "appType",
+      "colorHex": "#6C5CE7",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "appType_calendar",
+      "emoji": "🗓️",
+      "label": "Calendar / Scheduler",
+      "categoryId": "appType",
+      "colorHex": "#6C5CE7",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_rpg",
+      "emoji": "⚔️",
+      "label": "RPG",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_fps",
+      "emoji": "🔫",
+      "label": "FPS",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_puzzle",
+      "emoji": "🧩",
+      "label": "Puzzle",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_rhythm",
+      "emoji": "🥁",
+      "label": "Rhythm",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_vn",
+      "emoji": "📖",
+      "label": "Visual Novel",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_tower",
+      "emoji": "🏰",
+      "label": "Tower Defense",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_idle",
+      "emoji": "💤",
+      "label": "Idle / Clicker",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_br",
+      "emoji": "🏆",
+      "label": "Battle Royale",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_lifesim",
+      "emoji": "🏠",
+      "label": "Life Sim",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "game_roguelike",
+      "emoji": "💀",
+      "label": "Roguelike",
+      "categoryId": "gameGenre",
+      "colorHex": "#E74C3C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_graphicdesign",
+      "emoji": "🎨",
+      "label": "Graphic Design",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_video",
+      "emoji": "🎬",
+      "label": "Video Editing",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_musicprod",
+      "emoji": "🎹",
+      "label": "Music Production",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_3d",
+      "emoji": "🧊",
+      "label": "3D Modeling",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_animation",
+      "emoji": "🎞️",
+      "label": "Animation",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_illustration",
+      "emoji": "✏️",
+      "label": "Illustration",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_comic",
+      "emoji": "💬",
+      "label": "Comic Maker",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_meme",
+      "emoji": "😂",
+      "label": "Meme Generator",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_font",
+      "emoji": "🔤",
+      "label": "Font Design",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "creative_sticker",
+      "emoji": "🩹",
+      "label": "Sticker Maker",
+      "categoryId": "creativeTool",
+      "colorHex": "#8E44AD",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_coffeeshop",
+      "emoji": "☕",
+      "label": "Coffee Shop",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_space",
+      "emoji": "🚀",
+      "label": "Space Station",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_underwater",
+      "emoji": "🐠",
+      "label": "Underwater",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_castle",
+      "emoji": "🏰",
+      "label": "Medieval Castle",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_haunted",
+      "emoji": "👻",
+      "label": "Haunted House",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_island",
+      "emoji": "🏝️",
+      "label": "Tropical Island",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_tokyo",
+      "emoji": "🗼",
+      "label": "Tokyo Street",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_pizza",
+      "emoji": "🍕",
+      "label": "Pizza Kitchen",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_cabin",
+      "emoji": "🏕️",
+      "label": "Cozy Cabin",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "world_park",
+      "emoji": "🎢",
+      "label": "Amusement Park",
+      "categoryId": "world",
+      "colorHex": "#27AE60",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_calm",
+      "emoji": "😌",
+      "label": "Calm",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_hyper",
+      "emoji": "⚡",
+      "label": "Hyper",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_nostalgic",
+      "emoji": "🥹",
+      "label": "Nostalgic",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_spooky",
+      "emoji": "🎃",
+      "label": "Spooky",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_romantic",
+      "emoji": "💕",
+      "label": "Romantic",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_chaotic",
+      "emoji": "🌪️",
+      "label": "Chaotic",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_dreamy",
+      "emoji": "☁️",
+      "label": "Dreamy",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_euphoric",
+      "emoji": "🤩",
+      "label": "Euphoric",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_melancholy",
+      "emoji": "🌧️",
+      "label": "Melancholy",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "mood_hangry",
+      "emoji": "🍔",
+      "label": "Hangry",
+      "categoryId": "mood",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_timetravel",
+      "emoji": "⏰",
+      "label": "Time Travel",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_tuesday",
+      "emoji": "📅",
+      "label": "Only Works on Tuesdays",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_robot",
+      "emoji": "🤖",
+      "label": "Robot Butler",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_chiptune",
+      "emoji": "🕹️",
+      "label": "8-bit Chiptune",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_fortune",
+      "emoji": "🥠",
+      "label": "Fortune Cookie Wisdom",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_ephemeral",
+      "emoji": "💨",
+      "label": "Disappears After 24h",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_plant",
+      "emoji": "🌱",
+      "label": "Talking Plant",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_plottwist",
+      "emoji": "😱",
+      "label": "Plot Twist",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_whisper",
+      "emoji": "🤫",
+      "label": "Must Whisper",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "wild_gravity",
+      "emoji": "🙃",
+      "label": "Reverse Gravity",
+      "categoryId": "wildcard",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_gardening",
+      "emoji": "🌻",
+      "label": "Gardening",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_knitting",
+      "emoji": "🧶",
+      "label": "Knitting",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_skateboarding",
+      "emoji": "🛹",
+      "label": "Skateboarding",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_birdwatching",
+      "emoji": "🐦",
+      "label": "Birdwatching",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_boardgames",
+      "emoji": "🎲",
+      "label": "Board Games",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_origami",
+      "emoji": "🦢",
+      "label": "Origami",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_pottery",
+      "emoji": "🏺",
+      "label": "Pottery",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_stargazing",
+      "emoji": "🔭",
+      "label": "Stargazing",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_fishing",
+      "emoji": "🎣",
+      "label": "Fishing",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "hobby_karaoke",
+      "emoji": "🎤",
+      "label": "Karaoke",
+      "categoryId": "hobby",
+      "colorHex": "#F39C12",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_robot",
+      "emoji": "🤖",
+      "label": "Robot Butler",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_ghost",
+      "emoji": "👻",
+      "label": "Ghost Friend",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_dragon",
+      "emoji": "🐉",
+      "label": "Baby Dragon",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_alien",
+      "emoji": "👽",
+      "label": "Alien Pen Pal",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_ai",
+      "emoji": "🤓",
+      "label": "Sarcastic AI",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_parrot",
+      "emoji": "🦜",
+      "label": "Pirate Parrot",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_fairy",
+      "emoji": "🧚",
+      "label": "Tiny Fairy",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_owl",
+      "emoji": "🦉",
+      "label": "Grumpy Owl",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_cat",
+      "emoji": "🐱",
+      "label": "Time-Traveling Cat",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "companion_cactus",
+      "emoji": "🌵",
+      "label": "Talking Cactus",
+      "categoryId": "companion",
+      "colorHex": "#1ABC9C",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_anime",
+      "emoji": "🌸",
+      "label": "Cozy Anime",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_pixelart",
+      "emoji": "👾",
+      "label": "Pixel Art Indie",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_cyberpunk",
+      "emoji": "🌃",
+      "label": "Cyberpunk Noir",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_lofi",
+      "emoji": "🎧",
+      "label": "Lo-fi Hip Hop",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_cottagecore",
+      "emoji": "🌿",
+      "label": "Cottagecore",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_vaporwave",
+      "emoji": "🌴",
+      "label": "Vaporwave",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_kdrama",
+      "emoji": "🇰🇷",
+      "label": "K-Drama Vibes",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_90scartoon",
+      "emoji": "📺",
+      "label": "Retro Cartoon",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_steampunk",
+      "emoji": "⚙️",
+      "label": "Steampunk",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "pop_synthwave",
+      "emoji": "🎹",
+      "label": "Synthwave",
+      "categoryId": "popCulture",
+      "colorHex": "#E91E63",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_bicycle",
+      "emoji": "🚲",
+      "label": "Bicycle",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_rocket",
+      "emoji": "🚀",
+      "label": "Rocket Ship",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_skateboard",
+      "emoji": "🛹",
+      "label": "Skateboard",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_balloon",
+      "emoji": "🎈",
+      "label": "Hot Air Balloon",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_submarine",
+      "emoji": "🚢",
+      "label": "Submarine",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_carpet",
+      "emoji": "🪄",
+      "label": "Magic Carpet",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_train",
+      "emoji": "🚂",
+      "label": "Steam Train",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_canoe",
+      "emoji": "🛶",
+      "label": "Canoe",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_rollerblades",
+      "emoji": "⛸️",
+      "label": "Rollerblades",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    },
+    {
+      "id": "transport_zipline",
+      "emoji": "🪢",
+      "label": "Zipline",
+      "categoryId": "transport",
+      "colorHex": "#3498DB",
+      "isCustom": true,
+      "isFromSuggestion": false
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import Foundation
 
 enum DefaultIngredients {
-    static let all: [IngredientData] = appType + platform + theme + uxStyle + feature + interactionModel + vibe + scale
+    static let all: [IngredientData] = appType + platform + theme + uxStyle + feature + interactionModel + vibe + gameGenre + creativeTool + world + hobby + companion + popCulture + transport
 
     static func ingredients(for categoryId: String) -> [IngredientData] {
         all.filter { $0.categoryId == categoryId }
@@ -20,6 +20,11 @@ enum DefaultIngredients {
         IngredientData(id: "appType_music", emoji: "\u{1F3B5}", label: "Music Player", categoryId: "appType", colorHex: "#A29BFE"),
         IngredientData(id: "appType_reading", emoji: "\u{1F4DA}", label: "Reading App", categoryId: "appType", colorHex: "#D63031"),
         IngredientData(id: "appType_travel", emoji: "\u{1F5FA}\u{FE0F}", label: "Travel Guide", categoryId: "appType", colorHex: "#00CEC9"),
+        IngredientData(id: "appType_notes", emoji: "\u{1F4D2}", label: "Note Taking", categoryId: "appType", colorHex: "#FDCB6E"),
+        IngredientData(id: "appType_socialfeed", emoji: "\u{1F4E2}", label: "Social Feed", categoryId: "appType", colorHex: "#E84393"),
+        IngredientData(id: "appType_forum", emoji: "\u{1F465}", label: "Community Forum", categoryId: "appType", colorHex: "#636E72"),
+        IngredientData(id: "appType_project", emoji: "\u{1F4CB}", label: "Project Manager", categoryId: "appType", colorHex: "#2D3436"),
+        IngredientData(id: "appType_calendar", emoji: "\u{1F5D3}\u{FE0F}", label: "Calendar / Scheduler", categoryId: "appType", colorHex: "#0984E3"),
     ]
 
     // MARK: - Platform (7)
@@ -116,14 +121,108 @@ enum DefaultIngredients {
         IngredientData(id: "vibe_punk", emoji: "\u{1F3B8}", label: "Punk / DIY", categoryId: "vibe", colorHex: "#E84393"),
     ]
 
-    // MARK: - Scale (6)
+    // MARK: - Game Genre (10)
 
-    static let scale: [IngredientData] = [
-        IngredientData(id: "scale_weekend", emoji: "\u{1F680}", label: "Weekend Hack", categoryId: "scale", colorHex: "#FF7675"),
-        IngredientData(id: "scale_mvp", emoji: "\u{1F9EA}", label: "MVP", categoryId: "scale", colorHex: "#FDCB6E"),
-        IngredientData(id: "scale_production", emoji: "\u{2699}\u{FE0F}", label: "Production", categoryId: "scale", colorHex: "#0984E3"),
-        IngredientData(id: "scale_enterprise", emoji: "\u{1F3D7}\u{FE0F}", label: "Enterprise", categoryId: "scale", colorHex: "#2D3436"),
-        IngredientData(id: "scale_solo", emoji: "\u{1F464}", label: "Solo Developer", categoryId: "scale", colorHex: "#A29BFE"),
-        IngredientData(id: "scale_team", emoji: "\u{1F465}", label: "Small Team", categoryId: "scale", colorHex: "#00B894"),
+    static let gameGenre: [IngredientData] = [
+        IngredientData(id: "game_rpg", emoji: "\u{2694}\u{FE0F}", label: "RPG", categoryId: "gameGenre", colorHex: "#E74C3C"),
+        IngredientData(id: "game_fps", emoji: "\u{1F52B}", label: "FPS", categoryId: "gameGenre", colorHex: "#C0392B"),
+        IngredientData(id: "game_puzzle", emoji: "\u{1F9E9}", label: "Puzzle", categoryId: "gameGenre", colorHex: "#FF6B6B"),
+        IngredientData(id: "game_rhythm", emoji: "\u{1F941}", label: "Rhythm", categoryId: "gameGenre", colorHex: "#E74C3C"),
+        IngredientData(id: "game_vn", emoji: "\u{1F4D6}", label: "Visual Novel", categoryId: "gameGenre", colorHex: "#C0392B"),
+        IngredientData(id: "game_tower", emoji: "\u{1F3F0}", label: "Tower Defense", categoryId: "gameGenre", colorHex: "#FF6B6B"),
+        IngredientData(id: "game_idle", emoji: "\u{1F4A4}", label: "Idle / Clicker", categoryId: "gameGenre", colorHex: "#E74C3C"),
+        IngredientData(id: "game_br", emoji: "\u{1F3C6}", label: "Battle Royale", categoryId: "gameGenre", colorHex: "#C0392B"),
+        IngredientData(id: "game_lifesim", emoji: "\u{1F3E0}", label: "Life Sim", categoryId: "gameGenre", colorHex: "#FF6B6B"),
+        IngredientData(id: "game_roguelike", emoji: "\u{1F480}", label: "Roguelike", categoryId: "gameGenre", colorHex: "#E74C3C"),
+    ]
+
+    // MARK: - Creative Tool (10)
+
+    static let creativeTool: [IngredientData] = [
+        IngredientData(id: "creative_graphicdesign", emoji: "\u{1F3A8}", label: "Graphic Design", categoryId: "creativeTool", colorHex: "#8E44AD"),
+        IngredientData(id: "creative_video", emoji: "\u{1F3AC}", label: "Video Editing", categoryId: "creativeTool", colorHex: "#9B59B6"),
+        IngredientData(id: "creative_musicprod", emoji: "\u{1F3B9}", label: "Music Production", categoryId: "creativeTool", colorHex: "#BB6BD9"),
+        IngredientData(id: "creative_3d", emoji: "\u{1F9CA}", label: "3D Modeling", categoryId: "creativeTool", colorHex: "#8E44AD"),
+        IngredientData(id: "creative_animation", emoji: "\u{1F39E}\u{FE0F}", label: "Animation", categoryId: "creativeTool", colorHex: "#9B59B6"),
+        IngredientData(id: "creative_illustration", emoji: "\u{270F}\u{FE0F}", label: "Illustration", categoryId: "creativeTool", colorHex: "#BB6BD9"),
+        IngredientData(id: "creative_comic", emoji: "\u{1F4AC}", label: "Comic Maker", categoryId: "creativeTool", colorHex: "#8E44AD"),
+        IngredientData(id: "creative_meme", emoji: "\u{1F602}", label: "Meme Generator", categoryId: "creativeTool", colorHex: "#9B59B6"),
+        IngredientData(id: "creative_font", emoji: "\u{1F524}", label: "Font Design", categoryId: "creativeTool", colorHex: "#BB6BD9"),
+        IngredientData(id: "creative_sticker", emoji: "\u{1FA79}", label: "Sticker Maker", categoryId: "creativeTool", colorHex: "#8E44AD"),
+    ]
+
+    // MARK: - World / Setting (10)
+
+    static let world: [IngredientData] = [
+        IngredientData(id: "world_coffeeshop", emoji: "\u{2615}", label: "Coffee Shop", categoryId: "world", colorHex: "#27AE60"),
+        IngredientData(id: "world_space", emoji: "\u{1F680}", label: "Space Station", categoryId: "world", colorHex: "#2ECC71"),
+        IngredientData(id: "world_underwater", emoji: "\u{1F420}", label: "Underwater", categoryId: "world", colorHex: "#6BCB77"),
+        IngredientData(id: "world_castle", emoji: "\u{1F3F0}", label: "Medieval Castle", categoryId: "world", colorHex: "#27AE60"),
+        IngredientData(id: "world_haunted", emoji: "\u{1F47B}", label: "Haunted House", categoryId: "world", colorHex: "#2ECC71"),
+        IngredientData(id: "world_island", emoji: "\u{1F3DD}\u{FE0F}", label: "Tropical Island", categoryId: "world", colorHex: "#6BCB77"),
+        IngredientData(id: "world_tokyo", emoji: "\u{1F5FC}", label: "Tokyo Street", categoryId: "world", colorHex: "#27AE60"),
+        IngredientData(id: "world_pizza", emoji: "\u{1F355}", label: "Pizza Kitchen", categoryId: "world", colorHex: "#2ECC71"),
+        IngredientData(id: "world_cabin", emoji: "\u{1F3D5}\u{FE0F}", label: "Cozy Cabin", categoryId: "world", colorHex: "#6BCB77"),
+        IngredientData(id: "world_park", emoji: "\u{1F3A2}", label: "Amusement Park", categoryId: "world", colorHex: "#27AE60"),
+    ]
+
+    // MARK: - Hobby (10)
+
+    static let hobby: [IngredientData] = [
+        IngredientData(id: "hobby_gardening", emoji: "\u{1F33B}", label: "Gardening", categoryId: "hobby", colorHex: "#F39C12"),
+        IngredientData(id: "hobby_knitting", emoji: "\u{1F9F6}", label: "Knitting", categoryId: "hobby", colorHex: "#F7DC6F"),
+        IngredientData(id: "hobby_skateboarding", emoji: "\u{1F6F9}", label: "Skateboarding", categoryId: "hobby", colorHex: "#F39C12"),
+        IngredientData(id: "hobby_birdwatching", emoji: "\u{1F426}", label: "Birdwatching", categoryId: "hobby", colorHex: "#F7DC6F"),
+        IngredientData(id: "hobby_boardgames", emoji: "\u{1F3B2}", label: "Board Games", categoryId: "hobby", colorHex: "#F39C12"),
+        IngredientData(id: "hobby_origami", emoji: "\u{1F9A2}", label: "Origami", categoryId: "hobby", colorHex: "#F7DC6F"),
+        IngredientData(id: "hobby_pottery", emoji: "\u{1F3FA}", label: "Pottery", categoryId: "hobby", colorHex: "#F39C12"),
+        IngredientData(id: "hobby_stargazing", emoji: "\u{1F52D}", label: "Stargazing", categoryId: "hobby", colorHex: "#F7DC6F"),
+        IngredientData(id: "hobby_fishing", emoji: "\u{1F3A3}", label: "Fishing", categoryId: "hobby", colorHex: "#F39C12"),
+        IngredientData(id: "hobby_karaoke", emoji: "\u{1F3A4}", label: "Karaoke", categoryId: "hobby", colorHex: "#F7DC6F"),
+    ]
+
+    // MARK: - Companion / Sidekick (10)
+
+    static let companion: [IngredientData] = [
+        IngredientData(id: "companion_robot", emoji: "\u{1F916}", label: "Robot Butler", categoryId: "companion", colorHex: "#1ABC9C"),
+        IngredientData(id: "companion_ghost", emoji: "\u{1F47B}", label: "Ghost Friend", categoryId: "companion", colorHex: "#76D7C4"),
+        IngredientData(id: "companion_dragon", emoji: "\u{1F409}", label: "Baby Dragon", categoryId: "companion", colorHex: "#1ABC9C"),
+        IngredientData(id: "companion_alien", emoji: "\u{1F47D}", label: "Alien Pen Pal", categoryId: "companion", colorHex: "#76D7C4"),
+        IngredientData(id: "companion_ai", emoji: "\u{1F913}", label: "Sarcastic AI", categoryId: "companion", colorHex: "#1ABC9C"),
+        IngredientData(id: "companion_parrot", emoji: "\u{1F99C}", label: "Pirate Parrot", categoryId: "companion", colorHex: "#76D7C4"),
+        IngredientData(id: "companion_fairy", emoji: "\u{1F9DA}", label: "Tiny Fairy", categoryId: "companion", colorHex: "#1ABC9C"),
+        IngredientData(id: "companion_owl", emoji: "\u{1F989}", label: "Grumpy Owl", categoryId: "companion", colorHex: "#76D7C4"),
+        IngredientData(id: "companion_cat", emoji: "\u{1F431}", label: "Time-Traveling Cat", categoryId: "companion", colorHex: "#1ABC9C"),
+        IngredientData(id: "companion_cactus", emoji: "\u{1F335}", label: "Talking Cactus", categoryId: "companion", colorHex: "#76D7C4"),
+    ]
+
+    // MARK: - Pop Culture Flavor (10)
+
+    static let popCulture: [IngredientData] = [
+        IngredientData(id: "pop_anime", emoji: "\u{1F338}", label: "Cozy Anime", categoryId: "popCulture", colorHex: "#E91E63"),
+        IngredientData(id: "pop_pixelart", emoji: "\u{1F47E}", label: "Pixel Art Indie", categoryId: "popCulture", colorHex: "#F48FB1"),
+        IngredientData(id: "pop_cyberpunk", emoji: "\u{1F303}", label: "Cyberpunk Noir", categoryId: "popCulture", colorHex: "#E91E63"),
+        IngredientData(id: "pop_lofi", emoji: "\u{1F3A7}", label: "Lo-fi Hip Hop", categoryId: "popCulture", colorHex: "#F48FB1"),
+        IngredientData(id: "pop_cottagecore", emoji: "\u{1F33F}", label: "Cottagecore", categoryId: "popCulture", colorHex: "#E91E63"),
+        IngredientData(id: "pop_vaporwave", emoji: "\u{1F334}", label: "Vaporwave", categoryId: "popCulture", colorHex: "#F48FB1"),
+        IngredientData(id: "pop_kdrama", emoji: "\u{1F1F0}\u{1F1F7}", label: "K-Drama Vibes", categoryId: "popCulture", colorHex: "#E91E63"),
+        IngredientData(id: "pop_cartoon", emoji: "\u{1F4FA}", label: "Retro Cartoon", categoryId: "popCulture", colorHex: "#F48FB1"),
+        IngredientData(id: "pop_steampunk", emoji: "\u{2699}\u{FE0F}", label: "Steampunk", categoryId: "popCulture", colorHex: "#E91E63"),
+        IngredientData(id: "pop_synthwave", emoji: "\u{1F3B9}", label: "Synthwave", categoryId: "popCulture", colorHex: "#F48FB1"),
+    ]
+
+    // MARK: - Transportation (10)
+
+    static let transport: [IngredientData] = [
+        IngredientData(id: "transport_bicycle", emoji: "\u{1F6B2}", label: "Bicycle", categoryId: "transport", colorHex: "#3498DB"),
+        IngredientData(id: "transport_rocket", emoji: "\u{1F680}", label: "Rocket Ship", categoryId: "transport", colorHex: "#85C1E9"),
+        IngredientData(id: "transport_skateboard", emoji: "\u{1F6F9}", label: "Skateboard", categoryId: "transport", colorHex: "#3498DB"),
+        IngredientData(id: "transport_balloon", emoji: "\u{1F388}", label: "Hot Air Balloon", categoryId: "transport", colorHex: "#85C1E9"),
+        IngredientData(id: "transport_submarine", emoji: "\u{1F6A2}", label: "Submarine", categoryId: "transport", colorHex: "#3498DB"),
+        IngredientData(id: "transport_carpet", emoji: "\u{1FA84}", label: "Magic Carpet", categoryId: "transport", colorHex: "#85C1E9"),
+        IngredientData(id: "transport_train", emoji: "\u{1F682}", label: "Steam Train", categoryId: "transport", colorHex: "#3498DB"),
+        IngredientData(id: "transport_canoe", emoji: "\u{1F6F6}", label: "Canoe", categoryId: "transport", colorHex: "#85C1E9"),
+        IngredientData(id: "transport_rollerblades", emoji: "\u{26F8}\u{FE0F}", label: "Rollerblades", categoryId: "transport", colorHex: "#3498DB"),
+        IngredientData(id: "transport_zipline", emoji: "\u{1FAA2}", label: "Zipline", categoryId: "transport", colorHex: "#85C1E9"),
     ]
 }
