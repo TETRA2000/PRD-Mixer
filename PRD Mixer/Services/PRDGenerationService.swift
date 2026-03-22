@@ -7,6 +7,8 @@ import FoundationModels
 
 @Observable
 final class PRDGenerationService {
+    static let userPromptPrefix = "Generate a PRD for an app with these ingredients:"
+
     var isGenerating = false
     var streamedText = ""
     var error: String?
@@ -14,6 +16,7 @@ final class PRDGenerationService {
     #if canImport(FoundationModels)
     private var session: LanguageModelSession?
     private var isPrewarmed = false
+    private var prewarmedSystemPrompt: String?
     #endif
 
     var isAvailable: Bool {
@@ -36,9 +39,10 @@ final class PRDGenerationService {
 
         let session = LanguageModelSession(instructions: systemPrompt)
         self.session = session
+        prewarmedSystemPrompt = systemPrompt
 
         // Cache the known prompt prefix so the model can process it eagerly
-        let promptPrefix = Prompt("Generate a PRD for an app with these ingredients:")
+        let promptPrefix = Prompt(Self.userPromptPrefix)
         session.prewarm(promptPrefix: promptPrefix)
         isPrewarmed = true
         #endif
@@ -59,9 +63,9 @@ final class PRDGenerationService {
             return
         }
 
-        // Reuse a prewarmed session if available, otherwise create a new one
+        // Reuse a prewarmed session if the system prompt matches, otherwise create a new one
         let session: LanguageModelSession
-        if let existing = self.session {
+        if let existing = self.session, prewarmedSystemPrompt == systemPrompt {
             session = existing
         } else {
             session = LanguageModelSession(instructions: systemPrompt)
@@ -73,7 +77,7 @@ final class PRDGenerationService {
             .joined(separator: "\n")
 
         let userPrompt = """
-        Generate a PRD for an app with these ingredients:
+        \(Self.userPromptPrefix)
 
         \(ingredientList)
 
@@ -110,6 +114,7 @@ final class PRDGenerationService {
         #if canImport(FoundationModels)
         session = nil
         isPrewarmed = false
+        prewarmedSystemPrompt = nil
         #endif
         isGenerating = false
     }

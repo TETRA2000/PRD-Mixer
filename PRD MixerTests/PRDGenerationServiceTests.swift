@@ -21,8 +21,12 @@ struct PRDGenerationServiceTests {
 
     @Test func cancel_resetsState() {
         let service = PRDGenerationService()
+        service.streamedText = "leftover text"
+        service.error = "leftover error"
         service.cancel()
         #expect(!service.isGenerating)
+        #expect(service.streamedText == "leftover text") // cancel() preserves text; generate() resets it
+        #expect(service.error == "leftover error") // cancel() preserves error; generate() resets it
     }
 
     // MARK: - Cancellation via Task

@@ -53,6 +53,7 @@ final class MixViewModel {
 
     func clearSelection() {
         selectedIngredients.removeAll()
+        generationService.cancel()
     }
 
     // MARK: - Generation
