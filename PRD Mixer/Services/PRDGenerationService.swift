@@ -54,14 +54,24 @@ final class PRDGenerationService {
         do {
             let stream = session.streamResponse(to: userPrompt)
             for try await partial in stream {
+                try Task.checkCancellation()
                 streamedText = partial.content
             }
+        } catch is CancellationError {
+            // Task was cancelled (e.g. user dismissed the view) — not an error
+            self.session = nil
         } catch {
             self.error = "Generation failed: \(error.localizedDescription)"
         }
         #else
         // Simulator fallback: generate a placeholder PRD
-        await generatePlaceholder(ingredients: ingredients)
+        do {
+            try await generatePlaceholder(ingredients: ingredients)
+        } catch is CancellationError {
+            // Task was cancelled — not an error
+        } catch {
+            self.error = "Generation failed: \(error.localizedDescription)"
+        }
         #endif
 
         isGenerating = false
@@ -77,7 +87,7 @@ final class PRDGenerationService {
     // MARK: - Simulator Placeholder
 
     @MainActor
-    private func generatePlaceholder(ingredients: [IngredientData]) async {
+    private func generatePlaceholder(ingredients: [IngredientData]) async throws {
         let ingredientList = ingredients
             .map { "- \($0.emoji) **\($0.label)**" }
             .joined(separator: "\n")
@@ -147,6 +157,7 @@ final class PRDGenerationService {
         var current = ""
         var i = 0
         while i < characters.count {
+            try Task.checkCancellation()
             // Advance by a small chunk (roughly one word) to simulate token streaming
             let chunkEnd = min(i + 6, characters.count)
             current += String(characters[i..<chunkEnd])
