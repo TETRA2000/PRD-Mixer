@@ -19,10 +19,8 @@ struct ProjectDetailView: View {
                 Divider()
 
                 // PRD content
-                Text(AttributedString(fullMarkdown: project.generatedPRD))
-                    .font(.body)
+                MarkdownBlocksView(markdown: project.generatedPRD)
                     .textSelection(.enabled)
-                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding()
         }
