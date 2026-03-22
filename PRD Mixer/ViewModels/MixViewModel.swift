@@ -82,6 +82,21 @@ final class MixViewModel {
     }
 
     var generatedTitle: String {
+        // Extract the title from the first Markdown heading in the generated PRD
+        let text = generationService.streamedText
+        if !text.isEmpty {
+            let lines = text.components(separatedBy: .newlines)
+            for line in lines {
+                let trimmed = line.trimmingCharacters(in: .whitespaces)
+                if trimmed.hasPrefix("# ") {
+                    let title = String(trimmed.dropFirst(2)).trimmingCharacters(in: .whitespaces)
+                    if !title.isEmpty {
+                        return title
+                    }
+                }
+            }
+        }
+        // Fallback to ingredient-based title
         let labels = selectedIngredients.prefix(3).map(\.label)
         if labels.isEmpty { return "Untitled PRD" }
         return labels.joined(separator: " + ")

@@ -92,6 +92,39 @@ struct MixViewModelTests {
         #expect(vm.selectedIngredients[1].id == "new2")
     }
 
+    // MARK: - Generated Title
+
+    @Test func generatedTitle_extractsFromMarkdownHeading() {
+        let vm = MixViewModel()
+        vm.toggleIngredient(makeIngredient(id: "a"))
+        vm.generationService.streamedText = "# Watchful Butler\n\n## Summary\nSome text"
+        #expect(vm.generatedTitle == "Watchful Butler")
+    }
+
+    @Test func generatedTitle_fallsToIngredientLabelsWhenNoHeading() {
+        let vm = MixViewModel()
+        vm.toggleIngredient(makeIngredient(id: "a"))
+        vm.generationService.streamedText = "No heading here"
+        #expect(vm.generatedTitle == "Test")
+    }
+
+    @Test func generatedTitle_fallsToIngredientLabelsWhenEmpty() {
+        let vm = MixViewModel()
+        vm.toggleIngredient(makeIngredient(id: "a"))
+        #expect(vm.generatedTitle == "Test")
+    }
+
+    @Test func generatedTitle_returnsUntitledWhenNoIngredientsAndNoText() {
+        let vm = MixViewModel()
+        #expect(vm.generatedTitle == "Untitled PRD")
+    }
+
+    @Test func generatedTitle_ignoresSubheadings() {
+        let vm = MixViewModel()
+        vm.generationService.streamedText = "## This Is A Subheading\n\nSome text"
+        #expect(vm.generatedTitle == "Untitled PRD")
+    }
+
     // MARK: - Surprise Me
 
     @Test func surpriseMe_selects3to6Ingredients() {
