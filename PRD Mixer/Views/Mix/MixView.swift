@@ -23,10 +23,6 @@ struct MixView: View {
                                 onToggle: { viewModel.toggleIngredient($0) }
                             )
                         }
-
-                        CustomIngredientInputView { label in
-                            viewModel.addCustomIngredient(label: label)
-                        }
                     }
                     .padding(.vertical)
                     .padding(.bottom, 180) // Space for bowl + button
