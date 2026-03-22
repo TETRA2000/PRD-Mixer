@@ -35,6 +35,11 @@ final class MixViewModel {
         } else {
             selectedIngredients.append(ingredient)
             HapticService.selection()
+
+            // Prewarm the Foundation Model on first selection so generation starts faster
+            if selectedIngredients.count == 1 {
+                generationService.prewarm(systemPrompt: DefaultSystemPrompts.generationPromptBody)
+            }
         }
     }
 
@@ -116,6 +121,11 @@ final class MixViewModel {
             }
         }
         HapticService.selection()
+
+        // Prewarm after random selection so generation starts faster
+        if !selectedIngredients.isEmpty {
+            generationService.prewarm(systemPrompt: DefaultSystemPrompts.generationPromptBody)
+        }
     }
 
     // MARK: - Custom Ingredient

@@ -13,6 +13,7 @@ final class PRDGenerationService {
 
     #if canImport(FoundationModels)
     private var session: LanguageModelSession?
+    private var isPrewarmed = false
     #endif
 
     var isAvailable: Bool {
@@ -22,6 +23,28 @@ final class PRDGenerationService {
         false
         #endif
     }
+
+    // MARK: - Prewarming
+
+    /// Creates a session and preloads model resources so generation starts faster.
+    /// Call this when the user begins selecting ingredients to give the system
+    /// a head start before they tap "Mix".
+    func prewarm(systemPrompt: String) {
+        #if canImport(FoundationModels)
+        guard !isPrewarmed,
+              SystemLanguageModel.default.availability == .available else { return }
+
+        let session = LanguageModelSession(instructions: systemPrompt)
+        self.session = session
+
+        // Cache the known prompt prefix so the model can process it eagerly
+        let promptPrefix = Prompt("Generate a PRD for an app with these ingredients:")
+        session.prewarm(promptPrefix: promptPrefix)
+        isPrewarmed = true
+        #endif
+    }
+
+    // MARK: - Generation
 
     @MainActor
     func generate(ingredients: [IngredientData], systemPrompt: String) async {
@@ -36,8 +59,14 @@ final class PRDGenerationService {
             return
         }
 
-        let session = LanguageModelSession(instructions: systemPrompt)
-        self.session = session
+        // Reuse a prewarmed session if available, otherwise create a new one
+        let session: LanguageModelSession
+        if let existing = self.session {
+            session = existing
+        } else {
+            session = LanguageModelSession(instructions: systemPrompt)
+            self.session = session
+        }
 
         let ingredientList = ingredients
             .map { "\($0.emoji) \($0.label) (Category: \($0.categoryId))" }
@@ -80,6 +109,7 @@ final class PRDGenerationService {
     func cancel() {
         #if canImport(FoundationModels)
         session = nil
+        isPrewarmed = false
         #endif
         isGenerating = false
     }

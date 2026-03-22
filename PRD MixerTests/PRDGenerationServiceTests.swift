@@ -81,4 +81,28 @@ struct PRDGenerationServiceTests {
         #expect(!service.streamedText.contains("old text"))
         #expect(service.error == nil)
     }
+
+    // MARK: - Prewarm
+
+    @Test func prewarm_doesNotCrash() {
+        let service = PRDGenerationService()
+        // Should be safe to call regardless of model availability
+        service.prewarm(systemPrompt: "Test prompt")
+    }
+
+    @Test func prewarm_isIdempotent() {
+        let service = PRDGenerationService()
+        service.prewarm(systemPrompt: "Test prompt")
+        service.prewarm(systemPrompt: "Test prompt")
+        // Should not crash or create duplicate sessions
+    }
+
+    @Test func cancel_allowsSubsequentPrewarm() {
+        let service = PRDGenerationService()
+        service.prewarm(systemPrompt: "Test prompt")
+        service.cancel()
+        // After cancel, prewarm should be allowed again
+        service.prewarm(systemPrompt: "Test prompt")
+        #expect(!service.isGenerating)
+    }
 }
