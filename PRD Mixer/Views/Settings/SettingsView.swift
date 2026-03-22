@@ -9,16 +9,6 @@ struct SettingsView: View {
             List {
                 Section {
                     NavigationLink {
-                        SystemPromptListView()
-                    } label: {
-                        Label("System Prompts", systemImage: "text.bubble")
-                    }
-                } header: {
-                    Text("AI Configuration")
-                }
-
-                Section {
-                    NavigationLink {
                         IngredientManagerView()
                     } label: {
                         Label("Ingredient Categories", systemImage: "square.grid.2x2")
@@ -51,5 +41,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
-        .modelContainer(for: [SystemPrompt.self, CustomCategory.self, CustomIngredient.self], inMemory: true)
+        .modelContainer(for: [CustomCategory.self, CustomIngredient.self], inMemory: true)
 }

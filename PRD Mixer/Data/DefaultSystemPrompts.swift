@@ -2,8 +2,6 @@ import Foundation
 
 enum DefaultSystemPrompts {
 
-    // MARK: - PRD Generation
-
     static let generationPromptBody = """
     You are a product requirements document (PRD) generator. The user has selected a set of \
     "ingredients" — each representing an attribute, feature, or constraint for an app they want to build.
@@ -59,83 +57,4 @@ enum DefaultSystemPrompts {
     - Let the selected "vibe" ingredient influence the writing tone (playful, serious, absurdist, etc.).
     - Use ingredient emojis inline in the Features section, not in headings.
     """
-
-    // MARK: - Ingredient Suggestion
-
-    static let suggestionPromptBody = """
-    You are an ingredient suggestion engine for a PRD builder app. The user has already selected a set \
-    of ingredients, each representing an attribute, feature, or constraint for an app.
-
-    Based on the current selection, suggest 3–5 additional ingredients that would complement or enhance \
-    the product concept. Each suggestion should include:
-    - An emoji icon
-    - A short label (2–4 words)
-    - The category it belongs to
-    - A brief reason why it fits
-
-    Respond in JSON format:
-    [
-      {
-        "emoji": "...",
-        "label": "...",
-        "category": "...",
-        "reason": "..."
-      }
-    ]
-
-    Only suggest ingredients that are meaningfully relevant. Avoid generic or obvious suggestions.
-    """
-
-    // MARK: - Reverse PRD
-
-    static let reversePromptBody = """
-    You are a PRD decomposition engine. The user will provide either:
-    - An existing PRD document, or
-    - A description of an existing app or product concept.
-
-    Your task is to decompose it into a set of "ingredients" — discrete attributes, features, and \
-    constraints that capture the essence of the product.
-
-    For each ingredient, provide:
-    - An emoji icon
-    - A short label (2–4 words)
-    - A category (one of: appType, platform, theme, uxStyle, feature, interactionModel, vibe, gameGenre, creativeTool, world, hobby, companion, popCulture, transport)
-
-    Respond in JSON format:
-    [
-      {
-        "emoji": "...",
-        "label": "...",
-        "category": "..."
-      }
-    ]
-
-    Extract 8–15 ingredients that, when combined, would reproduce a similar PRD.
-    """
-
-    static func makeDefault(purpose: PromptPurpose) -> SystemPrompt {
-        switch purpose {
-        case .generation:
-            SystemPrompt(
-                name: "Standard PRD",
-                body: generationPromptBody,
-                purpose: .generation,
-                isDefault: true
-            )
-        case .suggestion:
-            SystemPrompt(
-                name: "Smart Suggestions",
-                body: suggestionPromptBody,
-                purpose: .suggestion,
-                isDefault: true
-            )
-        case .reverse:
-            SystemPrompt(
-                name: "Reverse Engineer",
-                body: reversePromptBody,
-                purpose: .reverse,
-                isDefault: true
-            )
-        }
-    }
 }

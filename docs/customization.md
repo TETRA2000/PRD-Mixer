@@ -57,41 +57,9 @@ Users can add their own ingredients to any category (built-in or custom).
 - Custom ingredients show a "Custom" badge in the manager
 - They can be deleted via swipe in the ingredient list
 
-## System Prompts
+## System Prompt
 
-### Built-in Prompts
-
-Three default prompts are seeded on first launch:
-
-1. **Standard PRD** (generation) — Produces a structured Markdown PRD
-2. **Smart Suggestions** (suggestion) — Returns JSON ingredient suggestions (Phase 2)
-3. **Reverse Engineer** (reverse) — Decomposes text into ingredient JSON (Phase 2)
-
-### Creating Custom Prompts
-
-1. Navigate to **Settings** → **System Prompts**
-2. Tap the **+** button
-3. Fill in:
-   - **Name** — Descriptive name (e.g. "Concise MVP", "Enterprise Detail")
-   - **Purpose** — Generation, Suggestion, or Reverse
-   - **Body** — Full prompt text in the monospaced editor
-4. Tap **Add**
-
-### Resetting to Defaults
-
-1. Navigate to **Settings** → **System Prompts**
-2. Tap the **reset** button (↺ icon) in the toolbar
-3. Confirm in the dialog
-
-This deletes all custom prompts and restores the three built-in defaults to their original content. Useful if you've modified a default prompt and want to revert, or want to clear out custom prompts.
-
-### Prompt Tips
-
-- Be specific about output format (Markdown headings, bullet lists)
-- Specify desired word count range
-- Include instructions about tone and detail level
-- Reference ingredient emojis for visual flair in output
-- The active generation prompt is the first one found with purpose "generation"
+The app uses a single hardcoded system prompt for PRD generation (`DefaultSystemPrompts.generationPromptBody`). This prompt is not user-editable; it is tuned for concise, fun, well-formatted Markdown PRD output. See `docs/prompt-tuning-test-plan.md` for the prompt iteration history.
 
 ## Ingredient Export/Import
 

@@ -48,14 +48,7 @@ guard LanguageModelSession.isAvailable else {
 
 ### PRD Generation
 
-The system prompt instructs the model to generate a structured Markdown PRD with:
-1. Executive Summary
-2. Problem Statement
-3. Target Audience
-4. Core Features (with acceptance criteria)
-5. Non-Functional Requirements
-6. Technical Architecture
-7. Milestones (3-phase plan)
+The app uses a single hardcoded system prompt (`DefaultSystemPrompts.generationPromptBody`) that instructs the model to generate a concise, well-formatted Markdown PRD. The prompt is tuned for fun, approachable output with consistent formatting (see `docs/prompt-tuning-test-plan.md` for iteration history).
 
 The user prompt lists selected ingredients in format:
 ```
@@ -63,17 +56,6 @@ The user prompt lists selected ingredients in format:
 📱 iOS (Category: platform)
 🐱 Cats (Category: theme)
 ```
-
-### Ingredient Suggestion (Phase 2)
-
-System prompt asks for 3-5 contextual ingredient suggestions in JSON format. The model returns:
-```json
-[{"emoji": "...", "label": "...", "category": "...", "reason": "..."}]
-```
-
-### Reverse PRD (Phase 2)
-
-System prompt asks the model to decompose input text into 8-15 ingredients in JSON format.
 
 ## Error Handling
 

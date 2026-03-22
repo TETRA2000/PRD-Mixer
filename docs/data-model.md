@@ -77,30 +77,6 @@ User-created category persisted in SwiftData.
 | secondaryColorHex | String | Secondary gradient color |
 | sortOrder | Int | Display order (starts after built-in max) |
 
-### SystemPrompt
-
-AI prompt template.
-
-| Field | Type | Description |
-|-------|------|-------------|
-| promptId | UUID | Unique identifier |
-| name | String | Display name |
-| body | String | Full prompt text |
-| purposeRaw | String | Enum raw value: generation, suggestion, reverse |
-| isDefault | Bool | Whether this is a built-in prompt |
-
-## Enums
-
-### PromptPurpose
-
-```swift
-enum PromptPurpose: String, Codable {
-    case generation   // PRD generation
-    case suggestion   // Ingredient suggestion (Phase 2)
-    case reverse      // Reverse PRD decomposition (Phase 2)
-}
-```
-
 ## Default Data Sets
 
 ### Categories (8 built-in)
@@ -127,11 +103,9 @@ enum PromptPurpose: String, Codable {
 - Vibe / Spirit: 10 ingredients
 - Scale: 6 ingredients
 
-### System Prompts (3 defaults)
+### System Prompt
 
-1. **Standard PRD** (generation) — Detailed instructions for structured Markdown PRD output
-2. **Smart Suggestions** (suggestion) — JSON-format ingredient suggestions
-3. **Reverse Engineer** (reverse) — Decompose PRD/description into ingredient JSON
+A single hardcoded system prompt is used for PRD generation (`DefaultSystemPrompts.generationPromptBody`). It is not stored in SwiftData.
 
 ## Serialization
 

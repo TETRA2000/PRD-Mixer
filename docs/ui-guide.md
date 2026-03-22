@@ -44,8 +44,6 @@ Discover Tab
 
 Settings Tab
 ├── SettingsView
-│   ├── SystemPromptListView (push)
-│   │   └── SystemPromptEditorView (push/sheet)
 │   └── IngredientManagerView (push)
 │       ├── CategoryIngredientsView (push)
 │       │   └── IngredientEditorView (sheet)
