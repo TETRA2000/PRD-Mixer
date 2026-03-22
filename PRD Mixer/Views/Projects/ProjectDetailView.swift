@@ -25,7 +25,9 @@ struct ProjectDetailView: View {
             .padding()
         }
         .navigationTitle(project.title)
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
@@ -49,6 +51,7 @@ struct ProjectDetailView: View {
                 }
             }
         }
+        #if os(iOS)
         .sheet(isPresented: $showShareSheet) {
             if let url = ExportService.markdownFileURL(
                 title: project.title,
@@ -57,6 +60,16 @@ struct ProjectDetailView: View {
                 ShareSheetView(activityItems: [url])
             }
         }
+        #elseif os(macOS)
+        .background {
+            if let url = ExportService.markdownFileURL(
+                title: project.title,
+                content: project.generatedPRD
+            ) {
+                MacShareButton(items: [url], isPresented: $showShareSheet)
+            }
+        }
+        #endif
         .alert("Delete Project", isPresented: $showDeleteConfirmation) {
             Button("Delete", role: .destructive) {
                 modelContext.delete(project)
