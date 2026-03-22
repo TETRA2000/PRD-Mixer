@@ -4,7 +4,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
-CUSTOM="category_candidates.json"
+CUSTOM="prompts/category_candidates.json"
 OUTDIR="outputs/category_test"
 mkdir -p "$OUTDIR"
 

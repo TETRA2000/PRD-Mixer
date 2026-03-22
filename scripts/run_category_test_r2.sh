@@ -3,7 +3,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
-CUSTOM="category_candidates.json"
+CUSTOM="prompts/category_candidates.json"
 OUTDIR="outputs/category_test_r2"
 mkdir -p "$OUTDIR"
 
