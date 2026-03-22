@@ -7,12 +7,16 @@ import FoundationModels
 
 @Observable
 final class PRDGenerationService {
+    static let userPromptPrefix = "Generate a PRD for an app with these ingredients:"
+
     var isGenerating = false
     var streamedText = ""
     var error: String?
 
     #if canImport(FoundationModels)
     private var session: LanguageModelSession?
+    private var isPrewarmed = false
+    private var prewarmedSystemPrompt: String?
     #endif
 
     var isAvailable: Bool {
@@ -22,6 +26,29 @@ final class PRDGenerationService {
         false
         #endif
     }
+
+    // MARK: - Prewarming
+
+    /// Creates a session and preloads model resources so generation starts faster.
+    /// Call this when the user begins selecting ingredients to give the system
+    /// a head start before they tap "Mix".
+    func prewarm(systemPrompt: String) {
+        #if canImport(FoundationModels)
+        guard !isPrewarmed,
+              SystemLanguageModel.default.availability == .available else { return }
+
+        let session = LanguageModelSession(instructions: systemPrompt)
+        self.session = session
+        prewarmedSystemPrompt = systemPrompt
+
+        // Cache the known prompt prefix so the model can process it eagerly
+        let promptPrefix = Prompt(Self.userPromptPrefix)
+        session.prewarm(promptPrefix: promptPrefix)
+        isPrewarmed = true
+        #endif
+    }
+
+    // MARK: - Generation
 
     @MainActor
     func generate(ingredients: [IngredientData], systemPrompt: String) async {
@@ -36,15 +63,21 @@ final class PRDGenerationService {
             return
         }
 
-        let session = LanguageModelSession(instructions: systemPrompt)
-        self.session = session
+        // Reuse a prewarmed session if the system prompt matches, otherwise create a new one
+        let session: LanguageModelSession
+        if let existing = self.session, prewarmedSystemPrompt == systemPrompt {
+            session = existing
+        } else {
+            session = LanguageModelSession(instructions: systemPrompt)
+            self.session = session
+        }
 
         let ingredientList = ingredients
             .map { "\($0.emoji) \($0.label) (Category: \($0.categoryId))" }
             .joined(separator: "\n")
 
         let userPrompt = """
-        Generate a PRD for an app with these ingredients:
+        \(Self.userPromptPrefix)
 
         \(ingredientList)
 
@@ -54,14 +87,24 @@ final class PRDGenerationService {
         do {
             let stream = session.streamResponse(to: userPrompt)
             for try await partial in stream {
+                try Task.checkCancellation()
                 streamedText = partial.content
             }
+        } catch is CancellationError {
+            // Task was cancelled (e.g. user dismissed the view) — not an error
+            self.session = nil
         } catch {
             self.error = "Generation failed: \(error.localizedDescription)"
         }
         #else
         // Simulator fallback: generate a placeholder PRD
-        await generatePlaceholder(ingredients: ingredients)
+        do {
+            try await generatePlaceholder(ingredients: ingredients)
+        } catch is CancellationError {
+            // Task was cancelled — not an error
+        } catch {
+            self.error = "Generation failed: \(error.localizedDescription)"
+        }
         #endif
 
         isGenerating = false
@@ -70,6 +113,8 @@ final class PRDGenerationService {
     func cancel() {
         #if canImport(FoundationModels)
         session = nil
+        isPrewarmed = false
+        prewarmedSystemPrompt = nil
         #endif
         isGenerating = false
     }
@@ -77,7 +122,7 @@ final class PRDGenerationService {
     // MARK: - Simulator Placeholder
 
     @MainActor
-    private func generatePlaceholder(ingredients: [IngredientData]) async {
+    private func generatePlaceholder(ingredients: [IngredientData]) async throws {
         let ingredientList = ingredients
             .map { "- \($0.emoji) **\($0.label)**" }
             .joined(separator: "\n")
@@ -147,6 +192,7 @@ final class PRDGenerationService {
         var current = ""
         var i = 0
         while i < characters.count {
+            try Task.checkCancellation()
             // Advance by a small chunk (roughly one word) to simulate token streaming
             let chunkEnd = min(i + 6, characters.count)
             current += String(characters[i..<chunkEnd])
