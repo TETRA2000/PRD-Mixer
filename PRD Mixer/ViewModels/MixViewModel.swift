@@ -92,12 +92,30 @@ final class MixViewModel {
     func surpriseMe(customCategories: [CustomCategory], customIngredients: [CustomIngredient]) {
         clearSelection()
         let categories = allCategories(customCategories: customCategories)
-        for category in categories {
+        let count = Int.random(in: 3...min(6, categories.count))
+        let picked = Array(categories.shuffled().prefix(count))
+        for category in picked {
             let available = ingredients(for: category.id, customIngredients: customIngredients)
             if let random = available.randomElement() {
                 selectedIngredients.append(random)
             }
         }
+        HapticService.selection()
+    }
+
+    // MARK: - Custom Ingredient
+
+    func addCustomIngredient(label: String) {
+        let trimmed = label.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        let ingredient = IngredientData(
+            emoji: "✏️",
+            label: trimmed,
+            categoryId: "custom",
+            colorHex: "#636E72",
+            isCustom: true
+        )
+        selectedIngredients.append(ingredient)
         HapticService.selection()
     }
 
