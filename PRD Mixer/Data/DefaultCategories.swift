@@ -82,6 +82,38 @@ enum DefaultCategories {
             secondaryColorHex: "#6BCB77",
             sortOrder: 9
         ),
+        CategoryData(
+            id: "hobby",
+            displayName: "Hobby",
+            emoji: "\u{1F9F6}",
+            colorHex: "#F39C12",
+            secondaryColorHex: "#F7DC6F",
+            sortOrder: 10
+        ),
+        CategoryData(
+            id: "companion",
+            displayName: "Companion / Sidekick",
+            emoji: "\u{1F916}",
+            colorHex: "#1ABC9C",
+            secondaryColorHex: "#76D7C4",
+            sortOrder: 11
+        ),
+        CategoryData(
+            id: "popCulture",
+            displayName: "Pop Culture Flavor",
+            emoji: "\u{1F3AC}",
+            colorHex: "#E91E63",
+            secondaryColorHex: "#F48FB1",
+            sortOrder: 12
+        ),
+        CategoryData(
+            id: "transport",
+            displayName: "Transportation",
+            emoji: "\u{1F6B2}",
+            colorHex: "#3498DB",
+            secondaryColorHex: "#85C1E9",
+            sortOrder: 13
+        ),
     ]
 
     static func category(for id: String) -> CategoryData? {

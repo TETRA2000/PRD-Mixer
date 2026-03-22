@@ -99,7 +99,7 @@ enum DefaultSystemPrompts {
     For each ingredient, provide:
     - An emoji icon
     - A short label (2–4 words)
-    - A category (one of: appType, platform, theme, uxStyle, feature, interactionModel, vibe, gameGenre, creativeTool, world)
+    - A category (one of: appType, platform, theme, uxStyle, feature, interactionModel, vibe, gameGenre, creativeTool, world, hobby, companion, popCulture, transport)
 
     Respond in JSON format:
     [

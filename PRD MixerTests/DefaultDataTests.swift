@@ -4,7 +4,7 @@ import Testing
 struct DefaultCategoriesTests {
 
     @Test func all_containsExpectedCount() {
-        #expect(DefaultCategories.all.count == 10)
+        #expect(DefaultCategories.all.count == 14)
     }
 
     @Test func all_haveSortedOrder() {
@@ -47,8 +47,8 @@ struct DefaultCategoriesTests {
 struct DefaultIngredientsTests {
 
     @Test func all_containsExpectedCount() {
-        // 15 + 7 + 12 + 10 + 15 + 10 + 10 + 10 + 10 + 10 = 109
-        #expect(DefaultIngredients.all.count == 109)
+        // 15 + 7 + 12 + 10 + 15 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 149
+        #expect(DefaultIngredients.all.count == 149)
     }
 
     @Test func all_haveUniqueIds() {
@@ -99,6 +99,10 @@ struct DefaultIngredientsTests {
         #expect(DefaultIngredients.gameGenre.count == 10)
         #expect(DefaultIngredients.creativeTool.count == 10)
         #expect(DefaultIngredients.world.count == 10)
+        #expect(DefaultIngredients.hobby.count == 10)
+        #expect(DefaultIngredients.companion.count == 10)
+        #expect(DefaultIngredients.popCulture.count == 10)
+        #expect(DefaultIngredients.transport.count == 10)
     }
 }
 
