@@ -13,7 +13,6 @@ enum DefaultDiscoverItems {
                 DefaultIngredients.feature.first { $0.id == "feat_push" }!,
                 DefaultIngredients.interactionModel.first { $0.id == "interact_tap" }!,
                 DefaultIngredients.vibe.first { $0.id == "vibe_wholesome" }!,
-                DefaultIngredients.scale.first { $0.id == "scale_mvp" }!,
             ],
             prdPreview: """
             # Cat Care Companion
@@ -42,7 +41,6 @@ enum DefaultDiscoverItems {
                 DefaultIngredients.feature.first { $0.id == "feat_offline" }!,
                 DefaultIngredients.interactionModel.first { $0.id == "interact_onehand" }!,
                 DefaultIngredients.vibe.first { $0.id == "vibe_serious" }!,
-                DefaultIngredients.scale.first { $0.id == "scale_weekend" }!,
             ],
             prdPreview: """
             # Weekend Fitness Sprint
@@ -71,7 +69,6 @@ enum DefaultDiscoverItems {
                 DefaultIngredients.feature.first { $0.id == "feat_social" }!,
                 DefaultIngredients.interactionModel.first { $0.id == "interact_swipe" }!,
                 DefaultIngredients.vibe.first { $0.id == "vibe_cozy" }!,
-                DefaultIngredients.scale.first { $0.id == "scale_production" }!,
             ],
             prdPreview: """
             # Student Study Hub
