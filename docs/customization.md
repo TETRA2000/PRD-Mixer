@@ -77,6 +77,14 @@ Three default prompts are seeded on first launch:
    - **Body** — Full prompt text in the monospaced editor
 4. Tap **Add**
 
+### Resetting to Defaults
+
+1. Navigate to **Settings** → **System Prompts**
+2. Tap the **reset** button (↺ icon) in the toolbar
+3. Confirm in the dialog
+
+This deletes all custom prompts and restores the three built-in defaults to their original content. Useful if you've modified a default prompt and want to revert, or want to clear out custom prompts.
+
 ### Prompt Tips
 
 - Be specific about output format (Markdown headings, bullet lists)
