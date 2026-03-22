@@ -22,7 +22,19 @@ struct GenerationView: View {
                 } else if viewModel.generationService.streamedText.isEmpty && !viewModel.generationService.isGenerating {
                     emptyState
                 } else {
-                    MarkdownView(markdown: viewModel.generationService.streamedText)
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            ingredientSection
+
+                            Divider()
+
+                            Text(AttributedString(fullMarkdown: viewModel.generationService.streamedText))
+                                .font(.body)
+                                .textSelection(.enabled)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding()
+                    }
                 }
             }
             .navigationTitle("Generated PRD")
@@ -80,6 +92,33 @@ struct GenerationView: View {
     }
 
     // MARK: - Subviews
+
+    private var ingredientSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Ingredients")
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
+
+            FlowLayout(spacing: 8) {
+                ForEach(viewModel.selectedIngredients) { ingredient in
+                    HStack(spacing: 4) {
+                        Text(ingredient.emoji)
+                            .font(.caption)
+                        Text(ingredient.label)
+                            .font(.caption2)
+                            .fontWeight(.medium)
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(
+                        Capsule()
+                            .fill(Color(hex: ingredient.colorHex).opacity(0.15))
+                    )
+                }
+            }
+        }
+    }
 
     private var generatingHeader: some View {
         HStack(spacing: 12) {
