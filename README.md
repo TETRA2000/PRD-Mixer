@@ -4,6 +4,8 @@ PRD Mixer is an iOS app that transforms PRD (Product Requirements Document) auth
 
 **Create a production-ready PRD without ever opening the keyboard.**
 
+[![Download on TestFlight](https://img.shields.io/badge/TestFlight-Download-blue?logo=apple)](https://testflight.apple.com/join/RucHUSYd)
+
 ## Screenshots
 
 <p align="center">
