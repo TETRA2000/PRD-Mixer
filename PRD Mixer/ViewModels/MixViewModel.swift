@@ -81,7 +81,7 @@ final class MixViewModel {
         try? modelContext.save()
     }
 
-    private var generatedTitle: String {
+    var generatedTitle: String {
         let labels = selectedIngredients.prefix(3).map(\.label)
         if labels.isEmpty { return "Untitled PRD" }
         return labels.joined(separator: " + ")

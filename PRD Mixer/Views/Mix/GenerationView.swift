@@ -1,8 +1,10 @@
+import SwiftData
 import SwiftUI
 
 struct GenerationView: View {
     @Bindable var viewModel: MixViewModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
 
     @State private var showShareSheet = false
     @State private var showSaveConfirmation = false
@@ -51,6 +53,7 @@ struct GenerationView: View {
                         }
 
                         Button {
+                            viewModel.projectTitle = viewModel.generatedTitle
                             showSaveConfirmation = true
                         } label: {
                             Image(systemName: "square.and.arrow.down")
