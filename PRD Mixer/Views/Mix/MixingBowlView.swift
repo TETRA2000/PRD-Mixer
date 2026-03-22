@@ -49,14 +49,16 @@ struct MixingBowlView: View {
                 // Expanded content
                 if isExpanded {
                     VStack(spacing: 12) {
-                        FlowLayout(spacing: 8) {
-                            ForEach(ingredients) { ingredient in
-                                IngredientChip(ingredient: ingredient) {
-                                    onRemove(ingredient)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8) {
+                                ForEach(ingredients) { ingredient in
+                                    IngredientChip(ingredient: ingredient) {
+                                        onRemove(ingredient)
+                                    }
                                 }
                             }
+                            .padding(.horizontal, 16)
                         }
-                        .padding(.horizontal, 16)
 
                         Button("Clear All", role: .destructive) {
                             onClear()
