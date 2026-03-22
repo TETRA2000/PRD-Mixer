@@ -58,7 +58,7 @@ Only user-created custom ingredients and categories use `@Model` classes (`Custo
 
 ### 3. System Prompt Snapshots
 
-Projects store the system prompt body as a plain string, not a relationship to a `SystemPrompt` model. This ensures PRDs remain reproducible even if the user later modifies or deletes the prompt.
+Projects store the system prompt body as a plain string snapshot. This ensures PRDs remain reproducible even if the hardcoded prompt is updated in a future app version.
 
 ### 4. Data-Driven Categories
 
@@ -82,7 +82,7 @@ The app uses a 4-tab `TabView` with a shared `MixViewModel` that enables cross-t
 - **Mix Tab** — Primary experience. Owns the `MixViewModel` instance.
 - **Projects Tab** — Lists saved projects. Provides a "Remix" callback that loads ingredients into the shared MixViewModel and switches to the Mix tab.
 - **Discover Tab** — Curated gallery. Also provides "Remix" functionality.
-- **Settings Tab** — Independent. Manages prompts, categories, and ingredients via SwiftData.
+- **Settings Tab** — Independent. Manages custom categories and ingredients via SwiftData.
 
 ## Persistence
 
@@ -91,7 +91,7 @@ The app uses a 4-tab `TabView` with a shared `MixViewModel` that enables cross-t
 | Projects | SwiftData | `@Model` with JSON blob for ingredients |
 | Custom Categories | SwiftData | `@Model CustomCategory` |
 | Custom Ingredients | SwiftData | `@Model CustomIngredient` |
-| System Prompts | SwiftData | `@Model SystemPrompt` |
+| System Prompt | Static constant | `DefaultSystemPrompts.generationPromptBody` |
 | Default Data | Static arrays | In-memory, code-defined |
 
 ## Prompt Tuner CLI
@@ -100,7 +100,7 @@ A companion macOS command-line tool (`prompt-tuner`) shares the app's model and 
 
 ### Architecture
 
-The CLI is defined in `Package.swift` at the project root as a single executable target. It directly compiles the app's existing model files (`Ingredient.swift`, `IngredientCategory.swift`, `PromptPurpose.swift`, `SystemPrompt.swift`) and data files (`DefaultCategories.swift`, `DefaultIngredients.swift`, `DefaultSystemPrompts.swift`) alongside its own source files in `PromptTuner/Sources/`. This avoids code duplication — the CLI uses the same `IngredientData`, `CategoryData`, and prompt templates as the iOS app.
+The CLI is defined in `Package.swift` at the project root as a single executable target. It directly compiles the app's existing model files (`Ingredient.swift`, `IngredientCategory.swift`) and data files (`DefaultCategories.swift`, `DefaultIngredients.swift`, `DefaultSystemPrompts.swift`) alongside its own source files in `PromptTuner/Sources/`. This avoids code duplication — the CLI uses the same `IngredientData`, `CategoryData`, and prompt templates as the iOS app.
 
 ```
 PromptTuner/

@@ -127,27 +127,4 @@ struct DefaultSystemPromptsTests {
     @Test func generationPromptBody_isNotEmpty() {
         #expect(!DefaultSystemPrompts.generationPromptBody.isEmpty)
     }
-
-    @Test func suggestionPromptBody_isNotEmpty() {
-        #expect(!DefaultSystemPrompts.suggestionPromptBody.isEmpty)
-    }
-
-    @Test func reversePromptBody_isNotEmpty() {
-        #expect(!DefaultSystemPrompts.reversePromptBody.isEmpty)
-    }
-
-    @Test func makeDefault_setsCorrectPurpose() {
-        let gen = DefaultSystemPrompts.makeDefault(purpose: .generation)
-        #expect(gen.purpose == .generation)
-        #expect(gen.isDefault == true)
-        #expect(gen.name == "Standard PRD")
-
-        let sug = DefaultSystemPrompts.makeDefault(purpose: .suggestion)
-        #expect(sug.purpose == .suggestion)
-        #expect(sug.name == "Smart Suggestions")
-
-        let rev = DefaultSystemPrompts.makeDefault(purpose: .reverse)
-        #expect(rev.purpose == .reverse)
-        #expect(rev.name == "Reverse Engineer")
-    }
 }

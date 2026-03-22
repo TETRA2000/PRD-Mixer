@@ -1,9 +1,7 @@
 import SwiftUI
-import SwiftData
 
 struct GenerationView: View {
     @Bindable var viewModel: MixViewModel
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
 
     @State private var showShareSheet = false
@@ -82,9 +80,7 @@ struct GenerationView: View {
                 guard !hasStartedGeneration else { return }
                 hasStartedGeneration = true
 
-                let settingsVM = SettingsViewModel()
-                let prompt = settingsVM.activeGenerationPrompt(modelContext: modelContext)
-                await viewModel.mix(systemPrompt: prompt)
+                await viewModel.mix(systemPrompt: DefaultSystemPrompts.generationPromptBody)
             }
         }
     }

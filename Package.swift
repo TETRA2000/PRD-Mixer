@@ -36,8 +36,6 @@ let package = Package(
             sources: [
                 "PRD Mixer/Models/Ingredient.swift",
                 "PRD Mixer/Models/IngredientCategory.swift",
-                "PRD Mixer/Models/PromptPurpose.swift",
-                "PRD Mixer/Models/SystemPrompt.swift",
                 "PRD Mixer/Data/DefaultCategories.swift",
                 "PRD Mixer/Data/DefaultIngredients.swift",
                 "PRD Mixer/Data/DefaultSystemPrompts.swift",
