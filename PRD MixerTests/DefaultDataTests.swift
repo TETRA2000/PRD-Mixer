@@ -4,7 +4,7 @@ import Testing
 struct DefaultCategoriesTests {
 
     @Test func all_containsExpectedCount() {
-        #expect(DefaultCategories.all.count == 8)
+        #expect(DefaultCategories.all.count == 10)
     }
 
     @Test func all_haveSortedOrder() {
@@ -47,8 +47,8 @@ struct DefaultCategoriesTests {
 struct DefaultIngredientsTests {
 
     @Test func all_containsExpectedCount() {
-        // 10 + 7 + 12 + 10 + 15 + 10 + 10 + 6 = 80
-        #expect(DefaultIngredients.all.count == 80)
+        // 15 + 7 + 12 + 10 + 15 + 10 + 10 + 10 + 10 + 10 = 109
+        #expect(DefaultIngredients.all.count == 109)
     }
 
     @Test func all_haveUniqueIds() {
@@ -77,7 +77,7 @@ struct DefaultIngredientsTests {
 
     @Test func ingredients_forCategory_filtersCorrectly() {
         let appTypeIngredients = DefaultIngredients.ingredients(for: "appType")
-        #expect(appTypeIngredients.count == 10)
+        #expect(appTypeIngredients.count == 15)
         for ingredient in appTypeIngredients {
             #expect(ingredient.categoryId == "appType")
         }
@@ -89,14 +89,16 @@ struct DefaultIngredientsTests {
     }
 
     @Test func perCategoryCount() {
-        #expect(DefaultIngredients.appType.count == 10)
+        #expect(DefaultIngredients.appType.count == 15)
         #expect(DefaultIngredients.platform.count == 7)
         #expect(DefaultIngredients.theme.count == 12)
         #expect(DefaultIngredients.uxStyle.count == 10)
         #expect(DefaultIngredients.feature.count == 15)
         #expect(DefaultIngredients.interactionModel.count == 10)
         #expect(DefaultIngredients.vibe.count == 10)
-        #expect(DefaultIngredients.scale.count == 6)
+        #expect(DefaultIngredients.gameGenre.count == 10)
+        #expect(DefaultIngredients.creativeTool.count == 10)
+        #expect(DefaultIngredients.world.count == 10)
     }
 }
 

@@ -59,12 +59,28 @@ enum DefaultCategories {
             sortOrder: 6
         ),
         CategoryData(
-            id: "scale",
-            displayName: "Scale",
-            emoji: "\u{1F4CF}",
-            colorHex: "#00CEC9",
-            secondaryColorHex: "#81ECEC",
+            id: "gameGenre",
+            displayName: "Game Genre",
+            emoji: "\u{1F3AE}",
+            colorHex: "#E74C3C",
+            secondaryColorHex: "#FF6B6B",
             sortOrder: 7
+        ),
+        CategoryData(
+            id: "creativeTool",
+            displayName: "Creative Tool",
+            emoji: "\u{1F58C}\u{FE0F}",
+            colorHex: "#8E44AD",
+            secondaryColorHex: "#BB6BD9",
+            sortOrder: 8
+        ),
+        CategoryData(
+            id: "world",
+            displayName: "World / Setting",
+            emoji: "\u{1F30D}",
+            colorHex: "#27AE60",
+            secondaryColorHex: "#6BCB77",
+            sortOrder: 9
         ),
     ]
 
