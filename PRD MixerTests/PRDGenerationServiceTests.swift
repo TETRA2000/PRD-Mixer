@@ -86,6 +86,27 @@ struct PRDGenerationServiceTests {
         #expect(service.error == nil)
     }
 
+    // MARK: - Unavailability Message
+
+    @Test func unavailabilityMessage_isNilWhenAvailable() {
+        let service = PRDGenerationService()
+        if service.isAvailable {
+            #expect(service.unavailabilityMessage == nil)
+        } else {
+            #expect(service.unavailabilityMessage != nil)
+            #expect(!service.unavailabilityMessage!.isEmpty)
+        }
+    }
+
+    @Test func unavailabilityMessage_consistentWithIsAvailable() {
+        let service = PRDGenerationService()
+        if service.isAvailable {
+            #expect(service.unavailabilityMessage == nil)
+        } else {
+            #expect(service.unavailabilityMessage != nil)
+        }
+    }
+
     // MARK: - Prewarm
 
     @Test func prewarm_doesNotCrash() {
