@@ -36,7 +36,9 @@ struct GenerationView: View {
                 }
             }
             .navigationTitle("Generated PRD")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") {
@@ -44,6 +46,7 @@ struct GenerationView: View {
                         dismiss()
                     }
                 }
+                #if os(iOS)
                 ToolbarItemGroup(placement: .primaryAction) {
                     if !viewModel.generationService.streamedText.isEmpty && !viewModel.generationService.isGenerating {
                         Button {
@@ -60,7 +63,9 @@ struct GenerationView: View {
                         }
                     }
                 }
+                #endif
             }
+            #if os(iOS)
             .sheet(isPresented: $showShareSheet) {
                 if let url = ExportService.markdownFileURL(
                     title: viewModel.projectTitle.isEmpty ? "PRD" : viewModel.projectTitle,
@@ -69,6 +74,37 @@ struct GenerationView: View {
                     ShareSheetView(activityItems: [url])
                 }
             }
+            #elseif os(macOS)
+            .safeAreaInset(edge: .bottom) {
+                if !viewModel.generationService.streamedText.isEmpty && !viewModel.generationService.isGenerating {
+                    HStack {
+                        Spacer()
+                        Button {
+                            showShareSheet = true
+                        } label: {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                        Button {
+                            viewModel.projectTitle = viewModel.generatedTitle
+                            showSaveConfirmation = true
+                        } label: {
+                            Label("Save Project", systemImage: "square.and.arrow.down")
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .padding()
+                    .background(.ultraThinMaterial)
+                }
+            }
+            .background {
+                if let url = ExportService.markdownFileURL(
+                    title: viewModel.projectTitle.isEmpty ? "PRD" : viewModel.projectTitle,
+                    content: viewModel.generationService.streamedText
+                ) {
+                    MacShareButton(items: [url], isPresented: $showShareSheet)
+                }
+            }
+            #endif
             .alert("Save Project", isPresented: $showSaveConfirmation) {
                 TextField("Project Title", text: $viewModel.projectTitle)
                 Button("Save") {
